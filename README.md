@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,3 +23,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+=======
+# MicroConsulting
+>>>>>>> 52b46d182ad12b8b6bbbb2e89a9bd2d5872a4ab9
