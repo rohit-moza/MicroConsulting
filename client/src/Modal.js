@@ -5,6 +5,44 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 
 class Modal extends React.Component {
 
+    constructor() {
+    super()
+    this.state = {
+      email: '',
+      password: ''
+    }
+  }
+
+
+
+  handleEmail = (e) => {
+    this.setState({email: e.target.value})
+  }
+
+  handlePassword = (e) => {
+    this.setState({password: e.target.value})
+  }
+
+  loginSubmit = (e) => {
+  let data = {
+    email: 'elon_musk@gmail.com',
+    name: 'Elon Musk'
+  }
+
+  let toSend = JSON.stringify(data)
+
+
+  e.preventDefault()
+  fetch("http://localhost:3001/api/users",
+  {
+    method: "POST",
+    body:  toSend
+  })
+ .then(response => response.json())
+ .then(json => console.log(json))
+ .then(console.log(JSON.stringify(data)))
+
+  }
 
   render() {
     // Render nothing if the "show" prop is false
@@ -41,13 +79,13 @@ class Modal extends React.Component {
           <form>
             <label>
               Emails:
-              <input type="text" name="name" />
+              <input onChange={this.handleEmail} type="text" name="email" />
             </label>
             <label>
               Password:
-              <input type="text" name="password" />
+              <input onChange={this.handlePassword} type="text" name="password" />
             </label>
-            <input type="submit" value="Submit" />
+            <input onClick={this.loginSubmit} type="submit" value="Submit" />
           </form>
 
           <div className="footer">
