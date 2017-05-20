@@ -23,6 +23,24 @@
   to { transform: rotate(360deg); }
 }
 
+.box1 {
+  width: 100px;
+  background-color: red;
+}
+
+.slide {
+  animation: slide 2s ease-in forwards
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(80px);
+  }
+}
 
 .example-enter {
   opacity: 0.01;

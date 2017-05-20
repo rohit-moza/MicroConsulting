@@ -1,5 +1,5 @@
 class UsersController < ApiController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :allow_cross_domain, :set_user, only: [:show, :update, :destroy]
 
   # GET /users
   def index
@@ -21,13 +21,22 @@ class UsersController < ApiController
     # else
     #   render json: @user.errors, status: :unprocessable_entity
     # end
-    puts "HEYYY I GOTTTT THISSS #{user_params.inspect}"
-    hash = user_params
-    puts "HEYYY I GOTTTT THISSS #{hash.inspect}"
-    hash = JSON.parse(hash) if hash.is_a?(String)
-    puts "HEYYY I GOTTTT THISSS #{hash.inspect}"
-    puts "HEYYY I GOTTTT THISSS #{hash[0]}"
-    @users = User.find_by(email: hash[:email])
+    puts "test #{user_params[:toSend]}"
+    puts "test #{params[:toSend]}"
+    puts "test #{params[:user]}"
+    puts "test #{params[:email]}"
+    puts "test #{params}"
+
+
+    @user = User.find_by(user_params[:toSend])
+    # puts "#{hash[0][:email]}"
+    puts "HEYYY I GOTTTT THISSS #{@user}"
+
+
+    # hash = JSON.parse(hash) if hash.is_a?(String)
+    # puts "HEYYY I GOTTTT THISSS #{hash.inspect}"
+    #
+    # @users = User.find_by(hash)
     render json: @users
   end
 
@@ -53,6 +62,13 @@ class UsersController < ApiController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.fetch(:user, { })
+      params.fetch(:user, {}).permit(:email, :name)
     end
+
+    def allow_cross_domain
+      headers['Access-Control-Allow-Origin'] = '*'
+      headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
+      headers['Access-Control-Allow-Headers'] = 'X-User-Token, X-User-Email, Origin, Content-Type, Accept, Authorization, Token'
+    end
+
 end

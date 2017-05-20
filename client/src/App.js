@@ -14,6 +14,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      slide: false,
       isOpen: false,
       opacity: 0
      };
@@ -34,12 +35,16 @@ class App extends Component {
 
   render() {
     return (
+
       <div className="App">
 
         <button onClick={this.toggleModal}>
           Open the modal
         </button>
 
+        <div className="slide box1">
+          <span >This should slide</span>
+        </div>
           <Modal show={this.state.isOpen}
             onClose={this.toggleModal}>
             Here's some content for the modal
@@ -52,5 +57,3 @@ class App extends Component {
 }
 
 export default App;
-
-
