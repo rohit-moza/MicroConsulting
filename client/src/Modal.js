@@ -25,24 +25,24 @@ class Modal extends React.Component {
 
   loginSubmit = (e) => {
   let data = {
-    email: 'elon_musk@gmail.com',
-    name: 'Elon Musk'
+    email: `${this.state.email}`,
+    password: `${this.state.password}`
   }
-
   let toSend = JSON.stringify(data)
 
-
   e.preventDefault()
-  fetch("http://localhost:3001/api/users",
-  {
-    method: "POST",
-    body:  toSend
+  fetch("http://localhost:3001/api/users",{
+    method: 'POST',
+    headers: {
+    'Content-Type': 'application/json'
+    },
+    body: toSend
   })
  .then(response => response.json())
  .then(json => console.log(json))
- .then(console.log(JSON.stringify(data)))
 
-  }
+
+}
 
   render() {
     // Render nothing if the "show" prop is false

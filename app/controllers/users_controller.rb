@@ -21,14 +21,12 @@ class UsersController < ApiController
     # else
     #   render json: @user.errors, status: :unprocessable_entity
     # end
-    puts "HEYYY I GOTTTT THISSS #{user_params.inspect}"
-    hash = user_params
-    puts "HEYYY I GOTTTT THISSS #{hash.inspect}"
-    hash = JSON.parse(hash) if hash.is_a?(String)
-    puts "HEYYY I GOTTTT THISSS #{hash.inspect}"
-    puts "HEYYY I GOTTTT THISSS #{hash[0]}"
-    @users = User.find_by(email: hash[:email])
-    render json: @users
+    @users = User.find_by(email: params[:email])
+    if @users && @users.authenticate(params[:password])
+       render json: @users
+    else
+       render json: {key: 'DENIED'}
+    end
   end
 
   # PATCH/PUT /users/1
@@ -53,6 +51,6 @@ class UsersController < ApiController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.fetch(:user, { })
+      ActiveModelSerializers::Deserialization.jsonapi_parse(params)
     end
 end
