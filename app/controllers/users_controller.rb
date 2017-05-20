@@ -21,23 +21,13 @@ class UsersController < ApiController
     # else
     #   render json: @user.errors, status: :unprocessable_entity
     # end
-    puts "test #{user_params[:toSend]}"
-    puts "test #{params[:toSend]}"
-    puts "test #{params[:user]}"
-    puts "test #{params[:email]}"
-    puts "test #{params}"
+    @users = User.find_by(email: params[:email])
+    if @users && @users.authenticate(params[:password])
+       render json: @users
+    else
+       render json: {key: 'DENIED'}
+    end
 
-
-    @user = User.find_by(user_params[:toSend])
-    # puts "#{hash[0][:email]}"
-    puts "HEYYY I GOTTTT THISSS #{@user}"
-
-
-    # hash = JSON.parse(hash) if hash.is_a?(String)
-    # puts "HEYYY I GOTTTT THISSS #{hash.inspect}"
-    #
-    # @users = User.find_by(hash)
-    render json: @users
   end
 
   # PATCH/PUT /users/1
@@ -62,13 +52,7 @@ class UsersController < ApiController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.fetch(:user, {}).permit(:email, :name)
-    end
-
-    def allow_cross_domain
-      headers['Access-Control-Allow-Origin'] = '*'
-      headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
-      headers['Access-Control-Allow-Headers'] = 'X-User-Token, X-User-Email, Origin, Content-Type, Accept, Authorization, Token'
+      ActiveModelSerializers::Deserialization.jsonapi_parse(params)
     end
 
 end
