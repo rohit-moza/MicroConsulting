@@ -29,7 +29,7 @@
 }
 
 .slide {
-  animation: slide 2s ease-in forwards
+  animation: slide 12s ease-in forwards
 }
 
 @keyframes slide {
