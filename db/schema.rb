@@ -86,8 +86,11 @@ ActiveRecord::Schema.define(version: 20170519164529) do
     t.string   "password_digest"
     t.string   "image"
     t.integer  "earnings_cents"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["subject_id"], name: "index_users_on_subject_id", using: :btree
   end

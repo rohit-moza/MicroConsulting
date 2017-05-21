@@ -8,6 +8,12 @@ Rails.application.routes.draw do
     resources :questionanswers
     resources :questions
     resources :subjects
-    resources :users
+    resources :users do
+      collection do
+        post 'confirm'
+        post 'login'
+      end
+  end
+
   end
 end

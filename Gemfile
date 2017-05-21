@@ -20,6 +20,9 @@ gem 'puma', '~> 3.0'
 gem 'bcrypt', '~> 3.1.7'
 # json gem
 gem 'json'
+# JWT tokens
+gem 'jwt'
+
 # Active model serializer
 gem 'active_model_serializers', '~> 0.10.0'
 

@@ -1,3 +1,5 @@
+
+
 class UsersController < ApiController
   before_action :set_user, only: [:show, :update, :destroy]
 
@@ -21,12 +23,18 @@ class UsersController < ApiController
     # else
     #   render json: @user.errors, status: :unprocessable_entity
     # end
-    @users = User.find_by(email: params[:email])
-    if @users && @users.authenticate(params[:password])
-       render json: @users
-    else
-       render json: {key: 'DENIED'}
-    end
+    # @users = User.find_by(email: params[:email])
+    # if @users && @users.authenticate(params[:password])
+    #    render json: @users
+    # else
+    #    render json: {key: 'DENIED'}
+    # end
+
+      if authenticate_request!
+         puts "DENIED"
+      else
+         puts "AUTH WORKED!!!!"
+      end
   end
 
   # PATCH/PUT /users/1
@@ -43,6 +51,32 @@ class UsersController < ApiController
     @user.destroy
   end
 
+  # POST FROM FRONT END TO LOGIN USERS /users/login
+  def login
+    user = User.find_by(email: params[:email].to_s.downcase)
+
+    if user && user.authenticate(params[:password])
+        auth_token = JsonWebToken.encode({user_id: user.id})
+        render json: {auth_token: auth_token}, status: :ok
+    else
+      render json: {error: 'Invalid username / password'}, status: :unauthorized
+    end
+  end
+  # Still in test
+  #POST TO CONFIRM FOR CONFIRMATION EMAIL FUNCTIONALITY
+  def confirm
+    token = params[:token].to_s
+
+    user = User.find_by(confirmation_token: token)
+
+    if user.present? && user.confirmation_token_valid?
+      user.mark_as_confirmed!
+      render json: {status: 'User confirmed successfully'}, status: :ok
+    else
+      render json: {status: 'Invalid token'}, status: :not_found
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -53,4 +87,7 @@ class UsersController < ApiController
     def user_params
       ActiveModelSerializers::Deserialization.jsonapi_parse(params)
     end
+
+
+
 end
