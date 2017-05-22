@@ -3,7 +3,7 @@ require 'mailgun'
 
 
 class UsersController < ApiController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :allow_cross_domain, :set_user, only: [:show, :update, :destroy]
 
   # GET /users
   def index
@@ -41,6 +41,7 @@ class UsersController < ApiController
     else
       render json: @user.errors, status: :unprocessable_entity
     end
+
   end
 
   # PATCH/PUT /users/1
@@ -93,7 +94,5 @@ class UsersController < ApiController
     def user_params
       ActiveModelSerializers::Deserialization.jsonapi_parse(params)
     end
-
-
 
 end

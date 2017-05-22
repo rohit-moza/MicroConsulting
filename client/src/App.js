@@ -1,12 +1,32 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../styles/App.css';
 
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import PropTypes from 'prop-types';
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
+import { browserHistory } from 'react-router'
 
-import Login from './login.js';
+import Register from './Register.js';
 import Modal from './Modal.js';
+
+import { createHashHistory } from 'history'
+export const history = createHashHistory()
+
+// Get the current location.
+const location = history.location
+
+// Listen for changes to the current location.
+const unlisten = history.listen((location, action) => {
+  // location is an object like window.location
+  console.log(action, location.pathname, location.state)
+})
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  // Switch,  when you need to switch routes turn this on
+  // Redirect when you need to redirect routes turn this on
+} from 'react-router-dom'
 
 
 class App extends Component {
@@ -14,6 +34,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      slide: false,
       isOpen: false,
       opacity: 0
      };
@@ -34,23 +55,32 @@ class App extends Component {
 
   render() {
     return (
+      <Router>
       <div className="App">
 
+        <Link to="/login">
         <button onClick={this.toggleModal}>
-          Open the modal
+          Login
         </button>
+        </Link>
 
-          <Modal show={this.state.isOpen}
+
+        <Link to="/register">
+        <button>
+          Register
+        </button>
+        </Link>
+
+          <Modal className="slide" show={this.state.isOpen}
             onClose={this.toggleModal}>
-            Here's some content for the modal
           </Modal>
 
-
+        <Route path="/login" component={Modal}/>
+        <Route path="/register" component={Register}/>
       </div>
+    </Router>
     );
   }
 }
 
 export default App;
-
-
