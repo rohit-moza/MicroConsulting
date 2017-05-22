@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include ActiveModel::Dirty
   has_many :subjects
   has_many :answers
   has_many :questions
@@ -25,9 +26,10 @@ class User < ApplicationRecord
   end
 
   def mark_as_confirmed!
-    self.confirmation_token = ''
+
+    self.confirmation_token = nil
     self.confirmed_at = Time.now.utc
-    save
+    save(options ={validate: false}) #conflicts with validate pass at create so enforcing override
   end
 
 end
