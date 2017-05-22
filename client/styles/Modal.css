@@ -32,12 +32,12 @@
 
 
 
-.loginPic {
+.loginSection {
   height: 500px;
   width: 50%;
   float: left;
   background-color: #5BC28D;
-  border-radius: 4px;
+  border-radius: 4px 0 0 4px;
   background-image: url("../public/loginBG.png");
   background-size: cover;
 }
@@ -166,6 +166,7 @@ form:first-child {
   padding: 20px 20px 20px 0;
   float: right;
   margin-right: 80px;
+  margin-top: 25px;
 }
 
 .closeBtn {
@@ -197,7 +198,7 @@ form:first-child {
 	position: absolute;
 	left: 0;
 	padding: 0 0.85em;
-	width: 100%;
+	width: 92%;
 	height: 100%;
 	text-align: left;
 	pointer-events: none;

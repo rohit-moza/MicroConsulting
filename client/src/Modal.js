@@ -3,6 +3,20 @@ import PropTypes from 'prop-types';
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import '../styles/Modal.css';
 
+
+import { createHashHistory } from 'history'
+export const history = createHashHistory()
+
+
+// Get the current location.
+const location = history.location
+
+// Listen for changes to the current location.
+const unlisten = history.listen((location, action) => {
+  // location is an object like window.location
+  console.log(action, location.pathname, location.state)
+})
+
 import {
   BrowserRouter as Router,
   Route,
@@ -136,9 +150,20 @@ class Modal extends React.Component {
     body: toSend
   })
  .then(response => response.json())
- .then(json => console.log(json))
+ .then(json => this.handleLogin(json))
+}
 
-
+handleLogin = (login) => {
+  if (login.key === "DENIED") {
+    console.log("this was DENIED");
+    this.props.onClose
+    history.replace('/page')
+  } else if (login.data.email !== "") {
+    console.log("just logged in");
+    this.props.onClose
+  } else {
+    console.log("ERROR");
+  }
 }
 
 
@@ -176,7 +201,7 @@ class Modal extends React.Component {
         <div className="modal slide" style={modalStyle}>
 
           <section>
-            <div className="loginPic">
+            <div className="loginSection">
               <Link to="/">
               <span className="closeBtn" onClick={this.props.onClose}>x</span>
               </Link>

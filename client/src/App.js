@@ -2,11 +2,23 @@ import React, { Component } from 'react';
 import '../styles/App.css';
 
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import PropTypes from 'prop-types';
 
+import { browserHistory } from 'react-router'
 
 import Register from './Register.js';
 import Modal from './Modal.js';
+
+import { createHashHistory } from 'history'
+export const history = createHashHistory()
+
+// Get the current location.
+const location = history.location
+
+// Listen for changes to the current location.
+const unlisten = history.listen((location, action) => {
+  // location is an object like window.location
+  console.log(action, location.pathname, location.state)
+})
 
 import {
   BrowserRouter as Router,
@@ -59,12 +71,10 @@ class App extends Component {
         </button>
         </Link>
 
-        <div className="slide box1">
-          <span >This should slide</span>
-        </div>
           <Modal className="slide" show={this.state.isOpen}
             onClose={this.toggleModal}>
           </Modal>
+
         <Route path="/login" component={Modal}/>
         <Route path="/register" component={Register}/>
       </div>
