@@ -119,6 +119,7 @@ GEM
       railties (>= 3.2.16)
     json (1.8.3)
     jsonapi-renderer (0.1.2)
+    jwt (1.5.6)
     kaminari (1.0.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.0.1)
@@ -234,6 +235,7 @@ DEPENDENCIES
   foreman
   inherited_resources!
   json
+  jwt
   listen (~> 3.0.5)
   pg
   puma (~> 3.0)
