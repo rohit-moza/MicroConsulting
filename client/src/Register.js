@@ -12,13 +12,7 @@ class Register extends Component {
     email: '',
     password: '',
     password_confirmation: '',
-
-    subjects: {
-      Law: false,
-      Engineering: false,
-      Health: false,
-      Medical: false
-    }
+    subject: 'None'
   }
 }
 
@@ -37,27 +31,17 @@ handleTextChange = (e) => {
 }
 
 handleInputChange = (e) => {
-  const target = e.target;
-  const value = target.type === 'checkbox' ? target.checked : target.value;
-  const name = target.name;
-
-  let newSubjects = this.state.subjects;
-  newSubjects[name] = value;
-
   this.setState({
-    subjects: newSubjects
+    subject: e.target.value
   });
 }
 
 
   registerSubmit = (e) => {
+  e.preventDefault()
   let toSend = JSON.stringify(this.state)
 
-
-
-  console.log(toSend);
-  e.preventDefault()
-  fetch("http://localhost:3001/api/users", {
+  fetch("http://localhost:3001/api/users/login", {
     method: 'POST',
     headers: {
     'Content-Type': 'application/json'
@@ -94,10 +78,11 @@ handleInputChange = (e) => {
               <input type="password" onChange={this.handleTextChange} name="password_confirmation" />
              <br/>
             <label> Subjects</label> <br/>
-              <input type="checkbox" onChange={this.handleInputChange} checked={this.state.subjects.Law} name="Law" /> Law  <br/>
-              <input type="checkbox" onChange={this.handleInputChange} checked={this.state.subjects.Engineering} name="Engineering" /> Engineering <br/>
-              <input type="checkbox" onChange={this.handleInputChange} checked={this.state.subjects.Health} name="Health" /> Health <br/>
-              <input type="checkbox" onChange={this.handleInputChange} checked={this.state.subjects.Medical} name="Medical" /> Medical <br/>
+              <input type="radio" checked={this.state.subject === 'None'} onChange={this.handleInputChange} value="None"  /> None  <br/>
+              <input type="radio" checked={this.state.subject === 'Law'} onChange={this.handleInputChange} value="Law"/> Law  <br/>
+              <input type="radio" checked={this.state.subject === 'Engineering'} onChange={this.handleInputChange} value="Engineering" /> Engineering <br/>
+              <input type="radio" checked={this.state.subject === 'Health'} onChange={this.handleInputChange} value="Health"  /> Health <br/>
+              <input type="radio"  checked={this.state.subject === 'Medical'} onChange={this.handleInputChange} value="Medical"  /> Medical <br/>
             <input onClick={this.registerSubmit} type="submit" value="Submit" />
           </form>
         </div>
