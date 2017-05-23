@@ -139,9 +139,10 @@ handleLogin = (login) => {
 
   if (login.key === "DENIED") {
     this.props.router.push('/register');
-    this.onClose();
+
     console.log("this was DENIED");
     document.getElementById("submitBtnID").classList.add('submitBtnError');
+    // document.getElementById("test").classList.add('input__label--jiro-error');
   } else if (login.data.email !== "") {
 
     console.log("just logged in");
@@ -193,6 +194,7 @@ handleLogin = (login) => {
               <img alt="login Icon" className="loginIcon" src="./usersIcon.svg" />
               <h4 className="loginText">Professional Consultants Are Just a Few Clicks Away</h4>
             </div>
+            <div className="formContainer">
             <form>
               <div className="titleContainer">
                 <h2 className="loginTitle">Welcome Back</h2>
@@ -200,7 +202,7 @@ handleLogin = (login) => {
               </div>
             <span className="emailInput input input--jiro">
               <input className="input__field input__field--jiro" onChange={this.handleEmail} type="text" id="input-10" />
-              <label className="input__label input__label--jiro">
+              <label className="input__label input__label--jiro" id="test">
                 <span className="input__label-content input__label-content--jiro">Email</span>
               </label>
             </span>
@@ -210,8 +212,9 @@ handleLogin = (login) => {
                 <span className="input__label-content input__label-content--jiro">Password</span>
               </label>
             </span> <br/>
-            <input onClick={this.loginSubmit} id="submitBtnID" className="submitBtn" type="submit" value="Submit" />
+            <input onClick={this.loginSubmit} id="submitBtnID" className="submitBtn" type="submit" value="Login" />
             </form>
+            </div>
           </section>
 
 

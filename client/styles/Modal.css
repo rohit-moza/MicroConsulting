@@ -31,6 +31,10 @@
 }
 
 
+.formContainer {
+  margin-left: 53%;
+}
+
 
 .loginSection {
   height: 500px;
@@ -46,6 +50,7 @@
   height: 120px;
   margin: 0 auto;
   margin-top: 30%;
+  margin-left: 38%;
 }
 
 .loginText {
@@ -134,7 +139,8 @@ form:first-child {
 
 
 .submitBtn {
-  margin-top: 30px;
+  margin-left: 110px;
+  margin-top: 50px;
   width: 200px;
   padding: 10px;
   border:1px solid #5BC28D;
@@ -146,7 +152,7 @@ form:first-child {
 }
 
 .submitBtnError {
-  margin-top: 30px;
+  margin-top: 50px;
   width: 200px;
   padding: 10px;
   border:1px solid #ff4d4d;
@@ -254,6 +260,12 @@ form:first-child {
 	transform-origin: 50% 0%;
 }
 
+/*.input__label--jiro-error {
+	background: #ff4d4d;
+  transition: transform 1s;
+}*/
+
+
 .input__field--jiro:focus,
 .input--filled .input__field--jiro {
 	opacity: 1;
@@ -302,27 +314,34 @@ form:first-child {
 
 @media screen and (max-width: 1040px) {
 
-  .loginPic {
-    display: none;
-  }
+.formContainer {
+  margin-left: 15%;
+}
 
-  .titleContainer {
-    width: 40%;
-    text-align: center;
-    margin-right: 25%;
-  }
+.loginSection {
+  display: none;
+}
 
-  .loginTitle {
-    text-align: center;
-  }
-  .closeBtn {
-    display: block;
-    color: black;
-  }
+.titleContainer {
+  width: 60%;
+  text-align: center;
+  margin-right: 25%;
+}
 
-  .input {
-    max-width: 600px
-  }
+.submitBtn {
+  margin-left: 25%;
+}
+.loginTitle, .loginSubtitle {
+  text-align: center;
+}
+.closeBtn {
+  display: block;
+  color: black;
+}
+
+.input {
+  max-width: 600px
+}
 
 
 }
@@ -330,28 +349,58 @@ form:first-child {
 
 @media screen and (max-width: 775px) {
 
-  .loginPic {
-    display: none;
-  }
+.loginSection {
+  display: none;
+}
 
-  .titleContainer {
-    width: 90%;
-    text-align: center;
-    margin-right: 0;
+.titleContainer {
+  width: 90%;
+  text-align: center;
+  margin-right: 10%;
 
-  }
+}
 
-  .loginTitle {
-    text-align: center;
-  }
-  .closeBtn {
-    display: block;
-    color: black;
-  }
+.loginTitle {
+  text-align: center;
+}
+.closeBtn {
+  display: block;
+  color: black;
+}
 
-  .input {
-    max-width: 200px
-  }
+.input {
+  max-width: 400px
+}
 
+}
+
+@media screen and (max-width: 450px) {
+
+.loginSection {
+  display: none;
+}
+
+.titleContainer {
+  width: 90%;
+  text-align: center;
+  margin-right: 10%;
+
+}
+
+.loginTitle {
+  text-align: center;
+}
+.closeBtn {
+  display: block;
+  color: black;
+}
+
+.input {
+  max-width: 200px
+}
+
+.submitBtn {
+  margin-left: 7%;
+}
 
 }

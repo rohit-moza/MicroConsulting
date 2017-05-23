@@ -1,0 +1,21 @@
+.registerContainer {
+  margin: auto;
+  max-width: 50%;
+}
+
+.registerForm {
+  width: 50%;
+  margin: auto;
+}
+
+.registerForm input {
+  margin: 10px;
+  width: 100%;
+  clear: both;
+  border: none;
+  border-bottom: 1px solid #5BC28D;
+}
+
+.registerForm input:focus {
+  outline: none;
+}
