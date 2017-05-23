@@ -1,40 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import '../styles/Modal.css';
-
-
-import { createHashHistory } from 'history'
-export const history = createHashHistory()
-
-
-// Get the current location.
-const location = history.location
-
-// Listen for changes to the current location.
-const unlisten = history.listen((location, action) => {
-  // location is an object like window.location
-  console.log(action, location.pathname, location.state)
-})
-
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  // Switch,  when you need to switch routes turn this on
-  // Redirect when you need to redirect routes turn this on
-} from 'react-router-dom'
-
-
+import { Link } from 'react-router';
 
 class Modal extends React.Component {
 
-    constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      show: true
     }
+  }
+
+  onClose = () => {
+    this.setState({
+      show: !this.state.show
+    });
   }
 
   checkinput = () => {
@@ -122,8 +105,6 @@ class Modal extends React.Component {
    })();
   }
 
-
-
   handleEmail = (e) => {
     this.setState({email: e.target.value})
     this.checkinput()
@@ -139,6 +120,7 @@ class Modal extends React.Component {
     email: `${this.state.email}`,
     password: `${this.state.password}`
   }
+
   let toSend = JSON.stringify(data)
 
   e.preventDefault()
@@ -154,13 +136,17 @@ class Modal extends React.Component {
 }
 
 handleLogin = (login) => {
+
   if (login.key === "DENIED") {
+    this.props.router.push('/register');
+    this.onClose();
     console.log("this was DENIED");
-    this.props.onClose
-    history.replace('/page')
+    document.getElementById("submitBtnID").classList.add('submitBtnError');
   } else if (login.data.email !== "") {
+
     console.log("just logged in");
-    this.props.onClose
+    this.onClose();
+
   } else {
     console.log("ERROR");
   }
@@ -169,7 +155,7 @@ handleLogin = (login) => {
 
   render() {
     // Render nothing if the "show" prop is false
-    if(!this.props.show) {
+    if(!this.state.show) {
       return null;
     }
 
@@ -196,7 +182,6 @@ handleLogin = (login) => {
 
 
     return (
-      <Router>
       <div className="backdrop fade" style={backdropStyle}>
         <div className="modal slide" style={modalStyle}>
 
@@ -225,7 +210,7 @@ handleLogin = (login) => {
                 <span className="input__label-content input__label-content--jiro">Password</span>
               </label>
             </span> <br/>
-            <input onClick={this.loginSubmit} className="submitBtn" type="submit" value="Submit" />
+            <input onClick={this.loginSubmit} id="submitBtnID" className="submitBtn" type="submit" value="Submit" />
             </form>
           </section>
 
@@ -233,9 +218,7 @@ handleLogin = (login) => {
           <div className="footer">
           </div>
         </div>
-        <Route path="/"/>
       </div>
-      </Router>
     );
   }
 }

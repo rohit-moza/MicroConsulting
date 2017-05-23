@@ -145,11 +145,27 @@ form:first-child {
   transition: all 0.5s;
 }
 
+.submitBtnError {
+  margin-top: 30px;
+  width: 200px;
+  padding: 10px;
+  border:1px solid #ff4d4d;
+  font-size: 1em;
+  color: white;
+  background-color: #ff4d4d;
+  border-radius: 20px;
+  transition: all 0.5s;
+}
+
 .submitBtn:hover {
   background-color: #5BC28D;
   color: white;
 }
 
+.submitBtnError:hover {
+  background-color: #ff4d4d;
+  color: white;
+}
 
 .loginTitle, .loginSubtitle {
   margin: 10px;
@@ -286,27 +302,27 @@ form:first-child {
 
 @media screen and (max-width: 1040px) {
 
-.loginPic {
-  display: none;
-}
+  .loginPic {
+    display: none;
+  }
 
-.titleContainer {
-  width: 40%;
-  text-align: center;
-  margin-right: 25%;
-}
+  .titleContainer {
+    width: 40%;
+    text-align: center;
+    margin-right: 25%;
+  }
 
-.loginTitle {
-  text-align: center;
-}
-.closeBtn {
-  display: block;
-  color: black;
-}
+  .loginTitle {
+    text-align: center;
+  }
+  .closeBtn {
+    display: block;
+    color: black;
+  }
 
-.input {
-  max-width: 600px
-}
+  .input {
+    max-width: 600px
+  }
 
 
 }
@@ -314,28 +330,28 @@ form:first-child {
 
 @media screen and (max-width: 775px) {
 
-.loginPic {
-  display: none;
-}
+  .loginPic {
+    display: none;
+  }
 
-.titleContainer {
-  width: 90%;
-  text-align: center;
-  margin-right: 0;
+  .titleContainer {
+    width: 90%;
+    text-align: center;
+    margin-right: 0;
 
-}
+  }
 
-.loginTitle {
-  text-align: center;
-}
-.closeBtn {
-  display: block;
-  color: black;
-}
+  .loginTitle {
+    text-align: center;
+  }
+  .closeBtn {
+    display: block;
+    color: black;
+  }
 
-.input {
-  max-width: 200px
-}
+  .input {
+    max-width: 200px
+  }
 
 
 }
