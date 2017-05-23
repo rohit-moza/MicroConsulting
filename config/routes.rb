@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :subjects
     resources :users do
       collection do
-        post 'confirm'
+        get 'confirm'
         post 'login'
       end
   end
