@@ -11,6 +11,8 @@ Subject.create!(name: 'None')
 Subject.create!(name: 'Engineering')
 Subject.create!(name: 'Health')
 Subject.create!(name: 'Law')
+Subject.create!(name: 'Medical')
+
 
 # User 1 seed question asker
 User.create!(subject_id: 1,first_name: 'Bob', last_name: 'Marley', email: 'bob_marley@gmail.com', password: 'hello123', password_confirmation: 'hello123', image:'./', earnings_cents: 0)
