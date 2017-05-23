@@ -3,7 +3,7 @@ require 'mailgun'
 
 
 class UsersController < ApiController
-  before_action :allow_cross_domain, :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
   def index
