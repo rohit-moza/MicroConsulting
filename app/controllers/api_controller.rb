@@ -22,7 +22,6 @@ require 'jsonwebtoken'
   # Deconstructs the Authorization header and decodes the JWT token.
   def payload
     auth_header = request.headers['Authorization']
-    puts "THIS IS WHAT I GET FOR AUTH : #{auth_header}"
     token = auth_header
     JsonWebToken.decode(token)
   rescue
@@ -31,8 +30,8 @@ require 'jsonwebtoken'
 
   # Sets the @current_user with the user_id from payload
   def load_current_user!
-    puts "LOADING USER BECAUSE AUTH WAS SUCCESFULL"
     @current_user = User.find_by(id: payload[0]['user_id'])
+
   end
 
 end
