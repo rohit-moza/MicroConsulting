@@ -53,18 +53,15 @@ export default class Dashboard extends Component {
 poll = () => {
   if (this.state.poll.show === true) {
     let test = setInterval(this.getQuestions, 1000);
-  } else {
-
   }
-
 }
 
 componentDidMount = () => {
-this.poll()
+  this.poll()
 }
 
 componentWillUnmount = () => {
-  if (this.state.poll.show === true && this.state.showDash === true) {
+  if (this.state.poll.show && this.state.showDash) {
     this.state.poll.show = false
   }
 
