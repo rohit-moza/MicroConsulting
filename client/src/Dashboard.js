@@ -11,7 +11,10 @@ export default class Dashboard extends Component {
     this.state = {
       showQ: false,
       showDash: true,
-      showProfile: false
+      showProfile: false,
+      poll: {
+        show: true
+      }
     };
   }
 
@@ -30,6 +33,9 @@ export default class Dashboard extends Component {
 
 
   getQuestions = () => {
+    if (this.state.poll.show === false) {
+      return false
+    }
     if (this.state.showDash === true) {
       console.log("got invoked");
     }
@@ -44,12 +50,25 @@ export default class Dashboard extends Component {
  // .then(json => this.handleLogin(json))
 }
 
+poll = () => {
+  if (this.state.poll.show === true) {
+    let test = setInterval(this.getQuestions, 1000);
+  } else {
 
+  }
+
+}
 
 componentDidMount = () => {
-  setInterval( () => {
-      this.getQuestions()
-    }, 1000);
+this.poll()
+}
+
+componentWillUnmount = () => {
+  if (this.state.poll.show === true && this.state.showDash === true) {
+    this.state.poll.show = false
+  }
+
+console.log("unmounting");
 }
 
   render() {
