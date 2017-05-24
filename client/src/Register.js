@@ -7,8 +7,8 @@ class Register extends Component {
   constructor() {
   super()
   this.state = {
-    firstName: '',
-    LastName: '',
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
     password_confirmation: '',
@@ -26,8 +26,8 @@ handleTextChange = (e) => {
 
   this.setState(newUserState);
 
-  // {lastName: value};
-  // this.setState({lastName: value});
+  // {last_name: value};
+  // this.setState({last_name: value});
 }
 
 handleInputChange = (e) => {
@@ -37,11 +37,11 @@ handleInputChange = (e) => {
 }
 
 
-  registerSubmit = (e) => {
+registerSubmit = (e) => {
   e.preventDefault()
   let toSend = JSON.stringify(this.state)
 
-  fetch("http://localhost:3001/api/users/login", {
+  fetch("http://localhost:3001/api/users", {
     method: 'POST',
     headers: {
     'Content-Type': 'application/json'
@@ -59,11 +59,11 @@ handleInputChange = (e) => {
           <form className="registerForm">
             <label>
               First Name: </label>
-              <input type="text" onChange={this.handleTextChange} name="firstName" />
+              <input type="text" onChange={this.handleTextChange} name="first_name" />
               <br/>
             <label>
               Last Name: </label>
-              <input type="text" onChange={this.handleTextChange} name="LastName" />
+              <input type="text" onChange={this.handleTextChange} name="last_name" />
             <br/>
             <label>
               Emails: </label>

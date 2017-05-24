@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/Modal.css';
 import { Link } from 'react-router';
+import Cookies from 'universal-cookie';
 
 class Modal extends React.Component {
 
@@ -124,7 +125,7 @@ class Modal extends React.Component {
   let toSend = JSON.stringify(data)
 
   e.preventDefault()
-  fetch("http://localhost:3001/api/users",{
+  fetch("http://localhost:3001/api/users/login",{
     method: 'POST',
     headers: {
     'Content-Type': 'application/json'
@@ -136,18 +137,15 @@ class Modal extends React.Component {
 }
 
 handleLogin = (login) => {
-
-  if (login.key === "DENIED") {
-    this.props.router.push('/register');
-
-    console.log("this was DENIED");
+  console.log(login);
+  if (login.error) {
     document.getElementById("submitBtnID").classList.add('submitBtnError');
-    // document.getElementById("test").classList.add('input__label--jiro-error');
-  } else if (login.data.email !== "") {
+  } else if (login.auth_token !== "") {
+    const cookies = new Cookies();
+    cookies.set('token', login.auth_token);
 
-    console.log("just logged in");
     this.onClose();
-
+    this.props.router.push('/dashboard');
   } else {
     console.log("ERROR");
   }

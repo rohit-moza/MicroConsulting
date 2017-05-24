@@ -6,10 +6,11 @@ export default class Navbar extends Component {
     return(
       <div>
         <Link to="/login">
-          <button onClick={this.toggleModal}>
+          <button>
             Login
           </button>
         </Link>
+
         <Link to="/register">
           <button>
             Register
