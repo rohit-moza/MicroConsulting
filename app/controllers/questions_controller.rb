@@ -1,6 +1,6 @@
 
-class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :update, :destroy]
+class QuestionsController < ApiController
+  before_action :authenticate_request!
 
   # GET /questions
   def index
@@ -14,12 +14,16 @@ class QuestionsController < ApplicationController
     render json: @question
   end
 
+
   # POST /questions
   def create
-    @question = Question.new(question_params)
 
-    if @question.save
-      render json: @question, status: :created, location: @question
+    @current_user = load_current_user!
+    @question = Question.new(user_id: @current_user.id, title: params[:title], content: params[:content])
+    @subject = Subject.find_by(name: params[:subject])
+    @questionsAnswers = Questionanswer.new(subject_id: @subject.id, question_id: @question.id, answer_id: nil)
+    if @question.save && @questionsAnswers.save
+      render json: {question: @question, questionsAnswers: @questionsAnswers}, status: :created, location: @question
     else
       render json: @question.errors, status: :unprocessable_entity
     end
@@ -36,7 +40,9 @@ class QuestionsController < ApplicationController
 
   # DELETE /questions/1
   def destroy
+    @question = Question.find(params[:id])
     @question.destroy
+    render json: Question.All
   end
 
   private

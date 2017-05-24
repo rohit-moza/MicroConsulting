@@ -1,5 +1,5 @@
-class AnswersController < ApplicationController
-  before_action :set_answer, only: [:show, :update, :destroy]
+class AnswersController < ApiController
+  before_action :authenticate_request!
 
   # GET /answers
   def index
@@ -13,14 +13,29 @@ class AnswersController < ApplicationController
     render json: @answer
   end
 
+
+  # create_table "answers", force: :cascade do |t|
+  #   t.integer "user_id"
+  #   t.string  "content"
+  #   t.index ["user_id"], name: "index_answers_on_user_id", using: :btree
+  # end
+
+# @current_user = load_current_user!
+#     @question = Question.new(user_id: @current_user.id, title: params[:title], content: params[:content])
+#     @subject = Subject.find_by(name: params[:subject])
+#     @question.save
+#     @questionsAnswers = Questionanswer.new(subject_id: @subject.id, question_id: @question.id, answer_id: nil)
   # POST /answers
   def create
-    @answer = Answer.new(answer_params)
+    @current_user = load_current_user!
+    @answer = Answer.new(user_id: @current_user.id, content: params[:content])
+    @questionsAnswers = Questionanswer.find(params[:question_id])
 
     if @answer.save
-      render json: @answer, status: :created, location: @answer
+      @questionsAnswers.update(answer_id: @answer.id)
+      render json: {answer: @answer, questionsAnswers: @questionsAnswers}, status: :created, location: @answer
     else
-      render json: @answer.errors, status: :unprocessable_entity
+      render json: {answer: @answer, questionsAnswers: @questionsAnswers}, status: :unprocessable_entity
     end
   end
 
