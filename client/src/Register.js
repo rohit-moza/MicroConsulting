@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/register.css';
-
+import { Link } from 'react-router';
 
 class Register extends Component {
 
@@ -55,6 +55,9 @@ registerSubmit = (e) => {
   render() {
     return (
       <div>
+        <Link to="/">
+        <button>Back</button>
+        </Link>
         <div className="registerContainer">
           <form className="registerForm">
             <label>

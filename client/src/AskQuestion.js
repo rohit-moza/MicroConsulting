@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import Cookies from 'universal-cookie';
 
 
@@ -42,7 +41,7 @@ handleTextChange = (e) => {
      method: 'POST',
      headers: {
      'Content-Type': 'application/json',
-     'token': 'token'
+     'Authorization': token
      },
      body: question
    })

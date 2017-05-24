@@ -137,7 +137,7 @@ class Modal extends React.Component {
 }
 
 handleLogin = (login) => {
-  console.log(login);
+  console.log(this.props.route);
   if (login.error) {
     document.getElementById("submitBtnID").classList.add('submitBtnError');
   } else if (login.auth_token !== "") {

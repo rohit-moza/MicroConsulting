@@ -2,11 +2,20 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 export default class Navbar extends Component {
+
+  constructor(props) {
+  super(props);
+    this.state = {
+      show: true
+    };
+  }
+
+
   render() {
     return(
       <div>
         <Link to="/login">
-          <button>
+          <button >
             Login
           </button>
         </Link>
