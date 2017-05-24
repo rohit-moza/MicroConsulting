@@ -11,7 +11,7 @@ A quick run down of how the app works
 Things you may want to cover:
 
 * Ruby version
-
+  2.3.3 With Rails 5
 * System dependencies
 
 * Configuration
@@ -19,6 +19,11 @@ Things you may want to cover:
 * Database creation
 
 * Database initialization
+
+  -rake db:drop all
+  -rake db:create
+  -rake db:migrate
+  -rake db:reset db:seed
 
 * How to run the test suite
 
