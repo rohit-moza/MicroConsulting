@@ -4,8 +4,9 @@ class QuestionsController < ApiController
 
   # GET /questions
   def index
-    @questions = Question.all
-
+    @current_user = load_current_user!
+    subject_id = @current_user.subject_id
+    @questions = Question.joins("INNER JOIN questionanswers ON questionanswers.question_id = questions.id AND (questionanswers.subject_id =#{subject_id} AND questionanswers.answer_id is NULL)")
     render json: @questions
   end
 
@@ -21,8 +22,10 @@ class QuestionsController < ApiController
     @current_user = load_current_user!
     @question = Question.new(user_id: @current_user.id, title: params[:title], content: params[:content])
     @subject = Subject.find_by(name: params[:subject])
-    @questionsAnswers = Questionanswer.new(subject_id: @subject.id, question_id: @question.id, answer_id: nil)
-    if @question.save && @questionsAnswers.save
+
+    if @question.save
+      @questionsAnswers = Questionanswer.new(subject_id: @subject.id, question_id: @question.id, answer_id: nil)
+      @questionsAnswers.save
       render json: {question: @question, questionsAnswers: @questionsAnswers}, status: :created, location: @question
     else
       render json: @question.errors, status: :unprocessable_entity
