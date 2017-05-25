@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :users do
       collection do
         get 'confirm'
+        get 'user_data'
         post 'login'
       end
     end
