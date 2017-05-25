@@ -18,7 +18,7 @@ export default class QuestionsList extends Component {
 
 
   toggleAnswer = (i) => {
-    
+
     const name = "showOneQ";
     let showState = this.state;
 
@@ -36,18 +36,25 @@ export default class QuestionsList extends Component {
     backToList.showList = true
     backToList.showOneQ = false
     this.setState({display: backToList});
+    console.log("calling updateQList");
+
+    this.props.updateQList()
   }
 
 
-  componentDidMount = () => {
+  componentWillMount = () => {
     let insertQs = this.state.questions
     insertQs = this.props.qlist
     this.setState({questions: insertQs})
+    console.log("will mount");
   }
 
   render() {
-    const questions = this.props.qlist
 
+    console.log(this.props.qlist);
+    const questions = this.props.qlist
+    this.state.questions = this.props.qlist
+    
     let listItems = questions.map((c, i) =>
     <div key={questions[i].id}>
       <p>{questions[i].id}</p>
@@ -62,7 +69,7 @@ export default class QuestionsList extends Component {
     return(
       <div>
         <h2>List of questions</h2>
-          { this.state.display.showList && listItems }
+          { this.state.display.showList && listItems  }
           { this.state.display.showOneQ && <Question QData={this.state.sendQuestion} updateDisplay={this.updateDisplay}/> }
       </div>
     )

@@ -81,7 +81,7 @@ getNewQuestions = () => {
 
 
 handleNewQuestion = (data) => {
-  if (data.length > this.state.questions.total) {
+  if (data.length > this.state.questions.length) {
     console.log("new message received");
     // remember to change the polled update total to state total
     // this.state.questions.total = data.length
@@ -93,6 +93,10 @@ handleNewQuestion = (data) => {
   }
 }
 
+updateQList = () => {
+  console.log("calling getAllQuestions");
+  this.getAllQuestions()
+}
 
 poll = () => {
   if (this.state.poll === true) {
@@ -126,7 +130,7 @@ console.log("unmounting");
           { this.state.display.showQ && <AskQuestion/> }
           {/* { this.state.display.showProfile && <Profile/> } */}
           { this.state.display.showAlert && <Alert/> }
-          { this.state.display.showQList && <QList qlist={this.state.questions}/> }
+          { this.state.display.showQList && <QList qlist={this.state.questions} updateQList={this.updateQList}/> }
         </div>
       </div>
     )
