@@ -1,9 +1,9 @@
 require 'mailgun'
-
+require 'open-uri'
 
 
 class UsersController < ApiController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action  :authenticate_request!, only: [:user_data]
 
   # GET /users
   def index
@@ -22,7 +22,15 @@ class UsersController < ApiController
     @subject = Subject.find_by(name: params[:subject])
     @user = User.new(subject_id: @subject.id ,first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation], image:'./', earnings_cents: 0)
 
+    # download = open('http://images.clipartpanda.com/smiley-face-clip-art-emotions-RidMBKdi9.jpeg')
+    # send_file(Rails.root.join('app' , 'controllers', 'sky_wave.jpg'))
+
     if @user.save
+      # GET IMAGE URL AND SAVE WITH UNDER USER ID.jpeg
+      download = open(params[:user_image_url])
+      IO.copy_stream(download, "public/images/#{@user.id}.jpeg")
+
+
       #SEND EMAIL
       # First, instantiate the Mailgun Client with your API key
       mg_client = Mailgun::Client.new 'key-be069e0dd16a6ff3c38a40b5ac45a7a2'
@@ -44,6 +52,17 @@ class UsersController < ApiController
 
   end
 
+  # GET users/user_data
+  def user_data
+    @current_user = load_current_user!
+    @subject = Subject.find(@current_user.subject_id)
+    render json: {
+      first_name: @current_user.first_name,
+      last_name: @current_user.last_name,
+      subject: @subject.name
+    }
+  end
+
   # PATCH/PUT /users/1
   def update
     if @user.update()
@@ -55,6 +74,7 @@ class UsersController < ApiController
 
   # DELETE /users/1
   def destroy
+    @user = User.find(params[:id])
     @user.destroy!
   end
 
