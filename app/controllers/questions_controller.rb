@@ -10,15 +10,26 @@ class QuestionsController < ApiController
     render json: @questions
   end
 
+  # GET /questions/my_questions SPECIFIC USER'S QUESTIONS
+  def my_questions
+    @current_user = load_current_user!
+     sql ="SELECT DISTINCT questions.id, questions.user_id, questions.title, questions.content, questionanswers.answer_id, answers.content
+                  FROM questions LEFT OUTER JOIN questionanswers                                                                                                                                                  ON questionanswers.question_id = questions.id AND questionanswers.subject_id =2
+                  LEFT OUTER JOIN answers ON questionanswers.answer_id = answer_id
+                  WHERE questions.user_id=2"
+    @questions = ActiveRecord::Base.connection.execute(sql)
+    render json: @questions
+  end
+
   # GET /questions/1
   def show
+    @question = Question.find(params[:id])
     render json: @question
   end
 
 
   # POST /questions
   def create
-
     @current_user = load_current_user!
     @question = Question.new(user_id: @current_user.id, title: params[:title], content: params[:content])
     @subject = Subject.find_by(name: params[:subject])
