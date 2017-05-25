@@ -1,10 +1,14 @@
+
+# require 'open-uri'
 class AnswersController < ApiController
   before_action :authenticate_request!
 
   # GET /answers
   def index
     @answers = Answer.all
-
+    # download = open('http://images.clipartpanda.com/smiley-face-clip-art-emotions-RidMBKdi9.jpeg')
+    # IO.copy_stream(download, 'public/images/smiley.jpeg')
+    # send_file(Rails.root.join('app' , 'controllers', 'sky_wave.jpg'))
     render json: @answers
   end
 
