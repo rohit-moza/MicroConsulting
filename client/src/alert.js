@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Dashboard extends Component {
+export default class Alert extends Component {
 
   constructor(props) {
   super(props);
@@ -10,7 +10,7 @@ export default class Dashboard extends Component {
   render() {
     return(
       <div>
-        <h2>Your notifications</h2>
+        <h2>You got a Question</h2>
       </div>
     )
   }

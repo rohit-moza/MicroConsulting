@@ -37,6 +37,7 @@ handleTextChange = (e) => {
 
    let question = JSON.stringify(this.state)
 
+   console.log(question);
    fetch("http://localhost:3001/api/questions", {
      method: 'POST',
      headers: {
