@@ -19,7 +19,11 @@ export default class Dashboard extends Component {
         showAlert: false,
         showQList: false,
       },
-      questions: [],
+      questions: {
+        list: [],
+        newMessage: false,
+        alertData: []
+      },
       poll: true
     };
   }
@@ -53,13 +57,15 @@ export default class Dashboard extends Component {
    .then((response) => { return response.json()})
    .then((json) => {
      let getQs = this.state.questions;
-     getQs = json
+     getQs.list = json
+     getQs.newMessage = false
      this.setState({questions: getQs})
+     console.log(this.state);
    })
 }
 
 getNewQuestions = () => {
-  console.log(this.state.questions);
+  // console.log(this.state.questions);
   if (this.state.poll === false) {
     return false
   }
@@ -81,20 +87,42 @@ getNewQuestions = () => {
 
 
 handleNewQuestion = (data) => {
-  if (data.length > this.state.questions.length) {
+  if (data.length > this.state.questions.list.length) {
     console.log("new message received");
-    // remember to change the polled update total to state total
-    // this.state.questions.total = data.length
+
+    console.log(data);
+    let newQ = data[data.length-1]
 
     let showAlert = this.state;
-    showAlert.showAlert = true;
+
+    showAlert.questions.alertData = newQ
+    showAlert.questions.newMessage = true
+    showAlert.questions.list = data
+    showAlert.display.showAlert = true;
     this.setState(showAlert);
 
   }
 }
 
+showNewAlert = () => {
+
+    let showState = this.state.display;
+    for (let key in showState) { showState[key] = false; }
+    showState["showQList"] = true;
+
+
+  this.setState({display: showState});
+
+}
+
 updateQList = () => {
   console.log("calling getAllQuestions");
+  let clearAlert = this.state.questions
+  clearAlert.newMessage = false
+  clearAlert.alertData = []
+  clearAlert.list = []
+
+  this.setState({questions: clearAlert});
   this.getAllQuestions()
 }
 
@@ -105,7 +133,7 @@ poll = () => {
 }
 
 componentDidMount = () => {
-  // this.poll()
+  this.poll()
   this.getAllQuestions()
 }
 
@@ -129,7 +157,7 @@ console.log("unmounting");
           { this.state.display.showDash && <DashHome/> }
           { this.state.display.showQ && <AskQuestion/> }
           {/* { this.state.display.showProfile && <Profile/> } */}
-          { this.state.display.showAlert && <Alert/> }
+          { this.state.display.showAlert && <Alert alert={this.state.questions.alertData} showNewAlert={this.showNewAlert}/> }
           { this.state.display.showQList && <QList qlist={this.state.questions} updateQList={this.updateQList}/> }
         </div>
       </div>

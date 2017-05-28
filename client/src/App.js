@@ -16,6 +16,7 @@ class App extends Component {
     return (
       <div>
         <Navbar />
+        <h1>Professional Consulting</h1>
       </div>
     );
   }

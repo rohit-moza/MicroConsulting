@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import '../styles/Navbar.css';
 
 export default class Navbar extends Component {
 
@@ -13,18 +14,22 @@ export default class Navbar extends Component {
 
   render() {
     return(
-      <div>
-        <Link to="/login">
-          <button >
-            Login
-          </button>
-        </Link>
+      <div className="navBar">
+        <img alt="login Icon" className="logoIcon" src="./logo.svg" />
+        <span className="logoTitle">Consulting</span>
+        <div className="navBtns">
+          <Link to="/login">
+            <button className="login">
+              Login
+            </button>
+          </Link>
 
-        <Link to="/register">
-          <button>
-            Register
-          </button>
-        </Link>
+          <Link to="/register">
+            <button>
+              Register
+            </button>
+          </Link>
+        </div>
       </div>
     )
   }

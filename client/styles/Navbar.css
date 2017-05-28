@@ -1,0 +1,51 @@
+
+.navBar {
+  padding: 20px;
+}
+
+.logoIcon {
+  height: 50px;
+}
+
+
+.login {
+
+}
+
+.logoTitle {
+  padding-left: 20px;
+  font-weight: 200;
+  color: white;
+  font-size: 2em;
+  vertical-align: top;
+}
+
+.navBtns {
+  display: inline-block;
+  float: right;
+  padding: 10px;
+}
+
+.navBtns button {
+  margin: 10px 20px 10px 20px;
+  border: 1px solid white;
+  background: none;
+  color: white;
+  border-radius: 30px;
+  padding: 10px;
+  width: 90px;
+  transition: all 0.5s
+}
+
+
+.navBtns button:hover {
+  margin: 10px 20px 10px 20px;
+  border: 1px solid white;
+  background: none;
+  color: white;
+  border-radius: 30px;
+  background-color: white;
+  color: #5BC28D;
+  padding: 10px;
+  width: 90px;
+}

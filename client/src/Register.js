@@ -12,9 +12,98 @@ class Register extends Component {
     email: '',
     password: '',
     password_confirmation: '',
-    subject: 'None'
+    subject: 'None',
+    showSubjects: false,
+    hideNext: false
   }
 }
+
+
+checkinput = () => {
+
+  function classReg( className ) {
+    return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
+  }
+
+  // classList support for class management
+  // altho to be fair, the api sucks because it won't accept multiple classes at once
+  var hasClass, addClass, removeClass;
+
+  if ( 'classList' in document.documentElement ) {
+    hasClass = function( elem, c ) {
+      return elem.classList.contains( c );
+    };
+    addClass = function( elem, c ) {
+      elem.classList.add( c );
+    };
+    removeClass = function( elem, c ) {
+      elem.classList.remove( c );
+    };
+  }
+  else {
+    hasClass = function( elem, c ) {
+      return classReg( c ).test( elem.className );
+    };
+    addClass = function( elem, c ) {
+      if ( !hasClass( elem, c ) ) {
+        elem.className = elem.className + ' ' + c;
+      }
+    };
+    removeClass = function( elem, c ) {
+      elem.className = elem.className.replace( classReg( c ), ' ' );
+    };
+  }
+
+  function toggleClass( elem, c ) {
+    var fn = hasClass( elem, c ) ? removeClass : addClass;
+    fn( elem, c );
+  }
+
+  var classie = {
+    // full names
+    hasClass: hasClass,
+    addClass: addClass,
+    removeClass: removeClass,
+    toggleClass: toggleClass,
+    // short names
+    has: hasClass,
+    add: addClass,
+    remove: removeClass,
+    toggle: toggleClass
+  };
+
+   (function() {
+
+   // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+   if (!String.prototype.trim) {
+     (function() {
+       // Make sure we trim BOM and NBSP
+       var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+       String.prototype.trim = function() {
+         return this.replace(rtrim, '');
+       };
+     })();
+   }
+   [].slice.call( document.querySelectorAll( 'input.input__fieldReg' ) ).forEach( function( inputEl ) {
+     // in case the input is already filled..
+     if( inputEl.value.trim() !== '' ) {
+       classie.add( inputEl.parentNode, 'input--filled' );
+     }
+     // events:
+     inputEl.addEventListener( 'focus', onInputFocus );
+     inputEl.addEventListener( 'blur', onInputBlur );
+   } );
+   function onInputFocus( ev ) {
+     classie.add( ev.target.parentNode, 'input--filled' );
+   }
+   function onInputBlur( ev ) {
+     if( ev.target.value.trim() === '' ) {
+       classie.remove( ev.target.parentNode, 'input--filled' );
+     }
+   }
+ })();
+}
+
 
 handleTextChange = (e) => {
   const target = e.target;
@@ -26,9 +115,25 @@ handleTextChange = (e) => {
 
   this.setState(newUserState);
 
+  this.checkinput()
   // {last_name: value};
   // this.setState({last_name: value});
 }
+
+
+showSub = (e) => {
+e.preventDefault()
+  let showS = this.state
+  showS.hideNext = true
+
+  this.setState(showS);
+
+  setTimeout(() => {
+    showS.showSubjects = true
+    this.setState(showS);
+  }, 500);
+}
+
 
 handleInputChange = (e) => {
   this.setState({
@@ -52,42 +157,121 @@ registerSubmit = (e) => {
  .then(json => console.log(json))
 }
 
+
+
   render() {
+
+    // The gray background
+    const backdropStyle = {
+      position: 'fixed',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      backgroundColor: 'rgba(91,194,141,1)',
+      padding: 50
+    };
+
+
+    // The modal "window"
+    const modalStyle = {
+      backgroundColor: '#fff',
+      borderRadius: 4,
+      maxWidth: 550,
+      minHeight: 300,
+      height: 600,
+      margin: '100px'
+    };
+
+
     return (
-      <div>
+      <div className="regBG fade" style={backdropStyle}>
         <Link to="/">
-        <button>Back</button>
+        <button className="backBtn">Back</button>
         </Link>
-        <div className="registerContainer">
-          <form className="registerForm">
-            <label>
-              First Name: </label>
-              <input type="text" onChange={this.handleTextChange} name="first_name" />
-              <br/>
-            <label>
-              Last Name: </label>
-              <input type="text" onChange={this.handleTextChange} name="last_name" />
-            <br/>
-            <label>
-              Emails: </label>
-              <input type="text" onChange={this.handleTextChange} name="email" />
-            <br/>
-            <label>
-              Password: </label>
-              <input type="password" onChange={this.handleTextChange} name="password" />
-            <br/>
-            <label>
-              Password Confirmation: </label>
-              <input type="password" onChange={this.handleTextChange} name="password_confirmation" />
-             <br/>
-            <label> Subjects</label> <br/>
-              <input type="radio" checked={this.state.subject === 'None'} onChange={this.handleInputChange} value="None"  /> None  <br/>
-              <input type="radio" checked={this.state.subject === 'Law'} onChange={this.handleInputChange} value="Law"/> Law  <br/>
-              <input type="radio" checked={this.state.subject === 'Engineering'} onChange={this.handleInputChange} value="Engineering" /> Engineering <br/>
-              <input type="radio" checked={this.state.subject === 'Health'} onChange={this.handleInputChange} value="Health"  /> Health <br/>
-              <input type="radio"  checked={this.state.subject === 'Medical'} onChange={this.handleInputChange} value="Medical"  /> Medical <br/>
-            <input onClick={this.registerSubmit} type="submit" value="Submit" />
-          </form>
+        <div className="move" style={modalStyle}>
+          <div>
+            <img alt="login Icon" className="regIcon" src="./regIcon.svg" />
+            <h1 className="signUpH1">Create An Account</h1>
+          </div>
+          <div className="registerContainer">
+            <form>
+              <section>
+                <div className={`firstForm ${this.state.showSubjects ? 'moveOut' : ''}`}>
+                <span className="inputReg input--yoshiko">
+                  <input name="first_name" onChange={this.handleTextChange} className="input__fieldReg input__fieldReg--yoshiko" type="text" id="input-10" />
+                  <label className="input__labelReg input__labelReg--yoshiko">
+                    <span className="input__labelReg-content input__labelReg-content--yoshiko" data-content="First Name">First Name</span>
+                  </label>
+                </span>
+                <span className="inputReg input--yoshiko">
+                  <input name="last_name" onChange={this.handleTextChange} className="input__fieldReg input__fieldReg--yoshiko" type="text" id="input-11" />
+                  <label className="input__labelReg input__labelReg--yoshiko">
+                    <span className="input__labelReg-content input__labelReg-content--yoshiko" data-content="Last Name">Last Name</span>
+                  </label>
+                </span>
+                <span className="inputReg input--yoshiko">
+                  <input name="email" onChange={this.handleTextChange} className="input__fieldReg input__fieldReg--yoshiko" type="text" id="input-12" />
+                  <label className="input__labelReg input__labelReg--yoshiko">
+                    <span className="input__labelReg-content input__labelReg-content--yoshiko" data-content="Email">Email</span>
+                  </label>
+                </span>
+                <span className="inputReg input--yoshiko">
+                  <input name="password" onChange={this.handleTextChange} className="input__fieldReg input__fieldReg--yoshiko" type="password" id="input-12" />
+                  <label className="input__labelReg input__labelReg--yoshiko">
+                    <span className="input__labelReg-content input__labelReg-content--yoshiko" data-content="Password">Password</span>
+                  </label>
+                </span>
+                <span className="inputReg input--yoshiko">
+                  <input name="password_confirmation" onChange={this.handleTextChange} className="input__fieldReg input__fieldReg--yoshiko" type="password" id="input-12" />
+                  <label className="input__labelReg input__labelReg--yoshiko">
+                    <span className="input__labelReg-content input__labelReg-content--yoshiko" data-content="Password Confirmation">Password Confirmation</span>
+                  </label>
+                </span> <br/>
+                </div>
+                <div className={`${this.state.showSubjects ? 'moveIn' : 'hideSubjects'}`} >
+                  <div className="middle">
+                    <label>
+                    <input type="radio" name="radio" value="None" onChange={this.handleInputChange} checked={this.state.subject === 'None'}/>
+                    <div className="front-end box">
+                      <span>None</span>
+                    </div>
+                    </label>
+
+                    <label>
+                    <input type="radio" name="radio" value="Law" onChange={this.handleInputChange} checked={this.state.subject === 'Law'}/>
+                    <div className="back-end box">
+                      <span>Law</span>
+                    </div>
+                    </label>
+
+                    <label>
+                    <input type="radio" name="radio" value="Engineering" onChange={this.handleInputChange} checked={this.state.subject === 'Engineering'}/>
+                    <div className="engin box">
+                      <span>Engineering</span>
+                    </div>
+                    </label>
+
+                    <label>
+                    <input type="radio" name="radio" value="Health" onChange={this.handleInputChange} checked={this.state.subject === 'Health'}/>
+                    <div className="health box">
+                      <span>Health</span>
+                    </div>
+                    </label>
+
+                    <label>
+                    <input type="radio" name="radio" value="Medical" onChange={this.handleInputChange} checked={this.state.subject === 'Medical'}/>
+                    <div className="medical box">
+                      <span>Medical</span>
+                    </div>
+                    </label>
+                  </div>
+                <input onClick={this.registerSubmit} id="submitBtnID" className="regBtn" type="submit" value="Submit" />
+                </div>
+                <input onClick={this.showSub} id="submitBtnID" className={`regBtn ${this.state.hideNext ? 'fadeOut' : ''}`} type="submit" value="Next" />
+              </section>
+            </form>
+          </div>
         </div>
       </div>
     );
