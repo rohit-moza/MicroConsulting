@@ -23,7 +23,7 @@ export default class Alert extends Component {
           <img alt="login Icon" className="alertIcon" src="./alertUser.svg" />
           {/* <h3>{this.props.alert.title}</h3>
           <h3>{this.props.alert.content}</h3> */}
-          <span>{this.props.alert.title}</span> <br/>
+          <span className="alertT">{this.props.alert.title}</span> <br/>
           <span className="alertQ">{this.props.alert.content}</span>
         </div>
       </div>

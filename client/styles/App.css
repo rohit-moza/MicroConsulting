@@ -72,9 +72,6 @@ margin-top: -5px;
   box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.35);
 }
 
-
-
-
 .actionIcon {
   padding-top: 5px;
   vertical-align: bottom;
@@ -85,13 +82,8 @@ margin-top: -5px;
   transition: all 0.5s;
 }
 
-
-
-
-
 .callAction:hover .actionIcon {
   opacity: 1;
-
 }
 
 .callAction:hover .actionIcon:after {
