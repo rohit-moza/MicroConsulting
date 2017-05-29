@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
+import '../styles/QList.css';
 
 export default class Question extends Component {
 
@@ -49,17 +50,17 @@ export default class Question extends Component {
 
   render() {
     return(
-      <div>
-        <h3>Title:</h3>
+      <div className="answerQ">
+        <h6>Title:</h6>
         <h5>{this.props.QData.title}</h5>
-        <h3>Question:</h3>
+        <h6>Question:</h6>
         <h5>{this.props.QData.content}</h5>
-        <h3>Answer:</h3>
+        <h6>Answer:</h6>
         <form>
-          <textarea onChange={this.handleTextChange} name="content" rows="4" cols="50"></textarea>
-          <input onClick={this.answerSubmit} type="submit"/>
+          <textarea className="answerText" onChange={this.handleTextChange} name="content" rows="4" cols="50"></textarea> <br/>
+          <input className="ansSubmit" onClick={this.answerSubmit} type="submit"/>
+          <button className="allQsBtn" onClick={this.handleDisplay}>All Questions</button>
         </form>
-        <button onClick={this.handleDisplay}>All Questions</button>
       </div>
     )
   }

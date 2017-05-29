@@ -85,13 +85,8 @@ margin-top: -5px;
   transition: all 0.5s;
 }
 
-
-
-
-
 .callAction:hover .actionIcon {
   opacity: 1;
-
 }
 
 .callAction:hover .actionIcon:after {

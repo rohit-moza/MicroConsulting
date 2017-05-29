@@ -24,6 +24,7 @@ export default class Dashboard extends Component {
         newMessage: false,
         alertData: []
       },
+      userInfo: { },
       poll: true
     };
   }
@@ -31,37 +32,60 @@ export default class Dashboard extends Component {
   toggleComponent = (e) => {
     const target = e.target;
     const name = target.name;
-    let showState = this.state.display;
+    let showState = this.state;
 
-    if (showState[name] === false) {
-      for (let key in showState) { showState[key] = false; }
-      showState[name] = true;
+    showState.questions.newMessage = false
+    showState.questions.alertData = []
+
+    if (showState.display[name] === false) {
+      for (let key in showState.display) { showState.display[key] = false; }
+      showState.display[name] = true;
     }
 
-    this.setState({display: showState});
+    this.setState(showState);
   }
 
 
-  getAllQuestions = () => {
-
-      console.log("got invoked");
+  getUserData = () => {
+      console.log("got user Data");
       const cookies = new Cookies();
       let token =  cookies.get('token')
-    fetch("http://localhost:3001/api/questions", {
+    fetch("http://localhost:3001/api/users/user_data", {
       method: 'GET',
       headers: {
       'Content-Type': 'application/json',
       'Authorization': token
       }
     })
-   .then((response) => { return response.json()})
-   .then((json) => {
-     let getQs = this.state.questions;
-     getQs.list = json
-     getQs.newMessage = false
-     this.setState({questions: getQs})
+    .then((response) => { return response.json()})
+    .then((json) => {
+     let getUser = this.state.userInfo;
+     getUser.name = json.first_name + " " + json.last_name
+     getUser.subject = json.subject
+     this.setState({userInfo: getUser})
      console.log(this.state);
-   })
+    })
+  }
+
+getAllQuestions = () => {
+    console.log("got invoked");
+    const cookies = new Cookies();
+    let token =  cookies.get('token')
+  fetch("http://localhost:3001/api/questions", {
+    method: 'GET',
+    headers: {
+    'Content-Type': 'application/json',
+    'Authorization': token
+    }
+  })
+  .then((response) => { return response.json()})
+  .then((json) => {
+   let getQs = this.state.questions;
+   getQs.list = json
+   getQs.newMessage = false
+   this.setState({questions: getQs})
+   console.log(this.state);
+  })
 }
 
 getNewQuestions = () => {
@@ -133,16 +157,16 @@ poll = () => {
 }
 
 componentDidMount = () => {
-  this.poll()
+  this.getUserData()
   this.getAllQuestions()
+  this.poll()
 }
 
 componentWillUnmount = () => {
   if (this.state.poll.show && this.state.showDash) {
     this.state.poll.show = false
   }
-
-console.log("unmounting");
+  console.log("unmounting");
 }
 
   render() {
@@ -152,7 +176,7 @@ console.log("unmounting");
           <div className="dashNav">
             <div className="userData">
               <img alt="login Icon" className="dashUserIcon" src="./callToActionHover.svg" />
-              <p>Matt Socha <br/> Welcome</p> <br/>
+              <p>{this.state.userInfo.name} <br/> Welcome</p> <br/>
             </div>
             <div className="dashBtns">
             <button name="showDash" onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./dash.svg" />Dashboard</button> <br/>

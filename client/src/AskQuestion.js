@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
+import '../styles/QList.css';
 
 
 export default class AskQuestion extends Component {
@@ -52,18 +53,19 @@ handleTextChange = (e) => {
 
   render() {
     return(
-      <div>
+      <div className="askQcontainer">
+        <h2 className="askQTitle">Ask A Question</h2>
         <form id="usrform">
-          Title: <input onChange={this.handleTextChange} type="text" name="title"/> <br/>
-          Question: <textarea onChange={this.handleTextChange} name="content" rows="4" cols="50"></textarea> <br/>
-
+          Title: <br/> <input onChange={this.handleTextChange} type="text" name="title"/> <br/>
+          Question: <br/> <textarea onChange={this.handleTextChange} name="content" rows="4" cols="50"></textarea> <br/>
+          Subject: <br/>
           <select value={this.state.subject} name="subject" onChange={this.handleTextChange}>
             <option name="law" defaultValue value="law">law</option>
             <option name="Engineering" value="Engineering">Engineering</option>
             <option name="Health" value="Health">Health</option>
             <option name="Medical" value="Medical">Medical</option>
           </select> <br/>
-          <input onClick={this.questionSubmit} type="submit"/>
+          <input className="askQBtn" onClick={this.questionSubmit} type="submit"/>
         </form>
         </div>
     )
