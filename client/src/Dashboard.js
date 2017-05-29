@@ -6,6 +6,7 @@ import Profile from './Profile.js';
 import Alert from './alert.js';
 import QList from './QuestionsList.js';
 import Cookies from 'universal-cookie';
+import MyQuestions from './MyQuestions.js';
 
 export default class Dashboard extends Component {
 
@@ -18,6 +19,7 @@ export default class Dashboard extends Component {
         showProfile: false,
         showAlert: false,
         showQList: false,
+          showMyQ: false
       },
       questions: {
         list: [],
@@ -158,6 +160,7 @@ console.log("unmounting");
             <button name="showDash" onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./dash.svg" />Dashboard</button> <br/>
             <button name="showQ" onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./askQ.svg" />Ask Question</button> <br/>
             <button name="showQList" onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./list.svg" />Question List</button>
+            <button name="showMyQ" onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./list.svg" />My Questions</button>
             {/* <button name="showProfile" onClick={this.toggleComponent}>Profile</button> */}
             </div>
           </div>
@@ -165,6 +168,7 @@ console.log("unmounting");
         <div className="dashboardMain">
           { this.state.display.showDash && <DashHome/> }
           { this.state.display.showQ && <AskQuestion/> }
+          { this.state.display.showMyQ && <MyQuestions/> }
           {/* { this.state.display.showProfile && <Profile/> } */}
           { this.state.display.showAlert && <Alert alert={this.state.questions.alertData} showNewAlert={this.showNewAlert}/> }
           { this.state.display.showQList && <QList qlist={this.state.questions} updateQList={this.updateQList}/> }

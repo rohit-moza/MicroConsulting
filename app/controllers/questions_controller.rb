@@ -13,12 +13,18 @@ class QuestionsController < ApiController
   # GET /questions/my_questions SPECIFIC USER'S QUESTIONS
   def my_questions
     @current_user = load_current_user!
-     sql ="SELECT DISTINCT questions.id, questions.user_id, questions.title, questions.content, questionanswers.answer_id, answers.content
-                  FROM questions LEFT OUTER JOIN questionanswers                                                                                                                                                  ON questionanswers.question_id = questions.id AND questionanswers.subject_id =2
-                  LEFT OUTER JOIN answers ON questionanswers.answer_id = answer_id
-                  WHERE questions.user_id=2"
-    @questions = ActiveRecord::Base.connection.execute(sql)
-    render json: @questions
+     #This query gives the questions and related answers for a particular user
+     sql ="SELECT DISTINCT questions.id, questions.user_id, questions.title,
+                  questions.content, questionanswers.answer_id, answers.content AS answer
+                  FROM questions
+                  LEFT OUTER JOIN questionanswers
+                  ON questionanswers.question_id = questions.id
+                  LEFT OUTER JOIN answers
+                  ON questionanswers.answer_id = answers.id
+                  WHERE questions.user_id=1 ORDER BY questions.id"
+
+    @questionsAnswers = ActiveRecord::Base.connection.execute(sql)
+    render json: @questionsAnswers
   end
 
   # GET /questions/1
