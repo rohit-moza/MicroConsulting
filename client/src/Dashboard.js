@@ -62,8 +62,15 @@ export default class Dashboard extends Component {
      let getUser = this.state.userInfo;
      getUser.name = json.first_name + " " + json.last_name
      getUser.subject = json.subject
+
+
+     if (getUser.subject === "None") {
+       getUser.subject = 0
+     }
+
      this.setState({userInfo: getUser})
      console.log(this.state);
+
     })
   }
 
@@ -129,14 +136,11 @@ handleNewQuestion = (data) => {
 }
 
 showNewAlert = () => {
-
-    let showState = this.state.display;
-    for (let key in showState) { showState[key] = false; }
-    showState["showQList"] = true;
-
+  let showState = this.state.display;
+  for (let key in showState) { showState[key] = false; }
+  showState["showQList"] = true;
 
   this.setState({display: showState});
-
 }
 
 updateQList = () => {
@@ -150,11 +154,14 @@ updateQList = () => {
   this.getAllQuestions()
 }
 
+
 poll = () => {
   if (this.state.poll === true) {
     setInterval(this.getNewQuestions, 10000);
   }
 }
+
+
 
 componentDidMount = () => {
   this.getUserData()
@@ -181,7 +188,7 @@ componentWillUnmount = () => {
             <div className="dashBtns">
             <button name="showDash" onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./dash.svg" />Dashboard</button> <br/>
             <button name="showQ" onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./askQ.svg" />Ask Question</button> <br/>
-            <button name="showQList" onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./list.svg" />Question List</button>
+            <button name="showQList" className={`${this.state.userInfo.subject ? '' : 'hideQList'}`} onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./list.svg" />Question List</button>
             {/* <button name="showProfile" onClick={this.toggleComponent}>Profile</button> */}
             </div>
           </div>
