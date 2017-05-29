@@ -202,10 +202,10 @@ componentWillUnmount = () => {
           </div>
         </div>
         <div className="dashboardMain">
+          { this.state.display.showAlert && <Alert alert={this.state.questions.alertData} showNewAlert={this.showNewAlert}/> }
           { this.state.display.showDash && <DashHome/> }
           { this.state.display.showQ && <AskQuestion/> }
           {/* { this.state.display.showProfile && <Profile/> } */}
-          { this.state.display.showAlert && <Alert alert={this.state.questions.alertData} showNewAlert={this.showNewAlert}/> }
           { this.state.display.showQList && <QList qlist={this.state.questions} updateQList={this.updateQList}/> }
         </div>
       </div>

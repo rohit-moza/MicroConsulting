@@ -266,6 +266,7 @@ registerSubmit = (e) => {
                     </div>
                     </label>
                   </div>
+                  <input type="file" name="fileToUpload" id="fileToUpload"/>
                 <input onClick={this.registerSubmit} id="submitBtnID" className="regBtn" type="submit" value="Submit" />
                 </div>
                 <input onClick={this.showSub} id="submitBtnID" className={`regBtn ${this.state.hideNext ? 'fadeOut' : ''}`} type="submit" value="Next" />
