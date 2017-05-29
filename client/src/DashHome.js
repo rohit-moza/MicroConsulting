@@ -9,8 +9,8 @@ export default class Dashboard extends Component {
 
   render() {
     return(
-      <div>
-        <h2>Your notifications</h2>
+      <div className="dashHome">
+        <h2>Welcome To Your Dashboard</h2>
       </div>
     )
   }

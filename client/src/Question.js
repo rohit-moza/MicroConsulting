@@ -50,7 +50,6 @@ export default class Question extends Component {
   render() {
     return(
       <div>
-        <h2>Answer this question</h2>
         <h3>Title:</h3>
         <h5>{this.props.QData.title}</h5>
         <h3>Question:</h3>

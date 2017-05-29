@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/alert.css';
 
 export default class Alert extends Component {
 
@@ -17,10 +18,14 @@ export default class Alert extends Component {
 
   render() {
     return(
-      <div>
-        <h2>You got a Question</h2>
-        <h3>{this.props.alert.title}</h3>
-        <button onClick={this.goToAlert}>answer</button>
+      <div onClick={this.goToAlert} className="alert slideAlert">
+        <div className="alertContent">
+          <img alt="login Icon" className="alertIcon" src="./alertUser.svg" />
+          {/* <h3>{this.props.alert.title}</h3>
+          <h3>{this.props.alert.content}</h3> */}
+          <span>{this.props.alert.title}</span> <br/>
+          <span className="alertQ">{this.props.alert.content}</span>
+        </div>
       </div>
     )
   }

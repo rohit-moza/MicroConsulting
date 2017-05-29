@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Question from './Question.js';
+import '../styles/QList.css';
 
 export default class QuestionsList extends Component {
 
@@ -68,19 +69,22 @@ export default class QuestionsList extends Component {
       this.state.questions = this.props.qlist.list
 
       let listItems = questions.map((c, i) =>
-      <div key={questions[i].id}>
-        <p>{questions[i].id}</p>
-        <span>Title:</span>
-        {questions[i].title} <br/>
-        <span>Question:</span>
-        {questions[i].content}
-        <button name="showOneQ" onClick={() =>{this.toggleAnswer(i)}}>Answer</button>
+      <div className="Qlist" key={questions[i].id}>
+        <div className="titleSection">
+        <span className="titleT">Title:</span> <br/>
+        <span>{questions[i].title}</span>
+        </div>
+        <div className="questionSection">
+        <span className="titleQ">Question:</span> <br/>
+        <span>{questions[i].content}</span>
+        </div>
+        <button name="showOneQ" className="showOneQ" onClick={() =>{this.toggleAnswer(i)}}>Answer</button>
       </div>
       );
 
       return(
-        <div>
-          <h2>List of questions</h2>
+        <div className="QlistScroll">
+          <h2>Unanswered Questions</h2>
             { this.state.display.showList && listItems  }
             { this.state.display.showOneQ && <Question QData={this.state.sendQuestion} updateDisplay={this.updateDisplay}/> }
         </div>

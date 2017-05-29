@@ -1,0 +1,64 @@
+.QlistScroll {
+  /*overflow-y: scroll;*/
+  height: 100%;
+}
+
+.QlistScroll h2 {
+  text-align: center;
+  color: #5BC28D;
+}
+
+.Qlist {
+  border-radius: 5px;
+  margin: auto;
+  width: 80%;
+  padding: 25px;
+  color: black;
+  -webkit-box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.15);
+  -moz-box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.15);
+  box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.15);
+  margin-bottom: 10px;
+}
+
+.titleT {
+  font-size: 0.7em;
+  color: grey;
+}
+
+.titleQ {
+  font-size: 0.7em;
+  color: grey;
+}
+
+.titleSection {
+  width: 40%;
+  display: inline-block;
+}
+
+.questionSection {
+  width: 40%;
+  display: inline-block;
+}
+
+hr.style2 {
+	border: 1px solid #5BC28D;
+  border-radius: 15px;
+  width: 90%;
+}
+
+.showOneQ {
+  background: none;
+  border: 1px solid #5BC28D;
+  padding: 10px;
+  width: 120px;
+  border-radius: 20px;
+  transition: all 0.5s;
+}
+
+.showOneQ:hover {
+  background: #5BC28D;
+  color: white;
+  padding: 10px;
+  width: 120px;
+  border-radius: 20px;
+}

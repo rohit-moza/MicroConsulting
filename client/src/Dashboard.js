@@ -148,11 +148,20 @@ console.log("unmounting");
   render() {
     return(
       <div className="dashboardContainer">
-        <button name="showDash" onClick={this.toggleComponent}>Dashboard</button>
-        <button name="showQ" onClick={this.toggleComponent}>ask question</button>
-        <button name="showQList" onClick={this.toggleComponent}>Question List</button>
-        {/* <button name="showProfile" onClick={this.toggleComponent}>Profile</button> */}
-        <h1>Welcome to the dashboard</h1>
+        <div className="topSection">
+          <div className="dashNav">
+            <div className="userData">
+              <img alt="login Icon" className="dashUserIcon" src="./callToActionHover.svg" />
+              <p>Matt Socha <br/> Welcome</p> <br/>
+            </div>
+            <div className="dashBtns">
+            <button name="showDash" onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./dash.svg" />Dashboard</button> <br/>
+            <button name="showQ" onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./askQ.svg" />Ask Question</button> <br/>
+            <button name="showQList" onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./list.svg" />Question List</button>
+            {/* <button name="showProfile" onClick={this.toggleComponent}>Profile</button> */}
+            </div>
+          </div>
+        </div>
         <div className="dashboardMain">
           { this.state.display.showDash && <DashHome/> }
           { this.state.display.showQ && <AskQuestion/> }

@@ -1,6 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700');
+
 
 body {
   background-image: url("../public/homeBG.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  font-family: 'Roboto', sans-serif;
+}
+
+.homeIcon {
+  height: 80px;
+}
+
+.introContainer {
+  padding-top: 200px;
+  width: 100%;
+  margin: auto;
+}
+
+.intro {
+  width: 30%;
+  margin: auto;
+  text-align: center;
+  color: white;
+  font-weight: 200;
+}
+
+
+.title {
+  font-weight: 400;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.subTitle {
+margin-top: -5px;
+}
+
+
+.callAction {
+  padding-right: 30px;
+  padding-bottom: 10px;
+  height: 40px;
+  font-size: 0.8em;
+  margin: 30px 20px 10px 20px;
+  background: #5BC28D;
+  border: none;
+  color: white;
+  border-radius: 30px;
+  width: 200px;
+  transition: all 0.5s;
+  -webkit-box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.35);
+  -moz-box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.35);
+  box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.35);
+}
+
+.callAction:hover {
+  padding-right: 0;
+  padding-bottom: 10px;
+  height: 40px;
+  font-size: 0.8em;
+  margin: 30px 20px 10px 20px;
+  background: #5BC28D;
+  border: none;
+  color: white;
+  border-radius: 30px;
+  width: 200px;
+  transition: all 0.5s;
+  -webkit-box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.35);
+  -moz-box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.35);
+  box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.35);
+}
+
+
+
+
+.actionIcon {
+  padding-top: 5px;
+  vertical-align: bottom;
+  opacity: 0;
+  height: 20px;
+  padding-right: 15px;
+  position: relative;
+  transition: all 0.5s;
+}
+
+
+
+
+
+.callAction:hover .actionIcon {
+  opacity: 1;
+
+}
+
+.callAction:hover .actionIcon:after {
+  opacity: 1;
+  right: 10;
 }
