@@ -30,7 +30,7 @@ class AnswersController < ApiController
   # POST /answers
   def create
     @current_user = load_current_user!
-    @answer = Answer.new(user_id: @current_user.id, content: params[:content])
+    @answer = Answer.new(user_id: @current_user.id, content: params[:answer])
     @questionsAnswers = Questionanswer.find(params[:question_id])
 
     if @answer.save
