@@ -25,6 +25,8 @@ class User < ApplicationRecord
       (self.confirmation_sent_at + 30.days) > Time.now.utc
   end
 
+
+
   def mark_as_confirmed!
     self.confirmation_token = nil
     self.confirmed_at = Time.now.utc

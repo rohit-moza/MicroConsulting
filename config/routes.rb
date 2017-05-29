@@ -6,14 +6,18 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :answers
     resources :questionanswers
-    resources :questions
+    resources :questions do
+      collection do
+        get 'my_questions'
+      end
+    end
     resources :subjects
     resources :users do
       collection do
         get 'confirm'
+        get 'user_data'
         post 'login'
       end
-  end
-
+    end
   end
 end

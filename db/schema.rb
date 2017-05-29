@@ -47,8 +47,10 @@ ActiveRecord::Schema.define(version: 20170519164529) do
   end
 
   create_table "answers", force: :cascade do |t|
-    t.integer "user_id"
-    t.string  "content"
+    t.integer  "user_id"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_answers_on_user_id", using: :btree
   end
 

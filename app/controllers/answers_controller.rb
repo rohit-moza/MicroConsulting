@@ -1,3 +1,5 @@
+
+# require 'open-uri'
 class AnswersController < ApiController
   before_action :authenticate_request!
 
