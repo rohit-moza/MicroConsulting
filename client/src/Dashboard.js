@@ -167,6 +167,14 @@ componentDidMount = () => {
   this.getUserData()
   this.getAllQuestions()
   this.poll()
+
+  const cookies = new Cookies();
+  let token =  cookies.get('token')
+  if (!token) {
+    console.log("no token");
+    this.props.router.push('/login');
+  }
+
 }
 
 componentWillUnmount = () => {

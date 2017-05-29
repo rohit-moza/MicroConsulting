@@ -55,9 +55,9 @@ handleTextChange = (e) => {
     return(
       <div className="askQcontainer">
         <h2 className="askQTitle">Ask A Question</h2>
-        <form id="usrform">
-          Title: <br/> <input onChange={this.handleTextChange} type="text" name="title"/> <br/>
-          Question: <br/> <textarea onChange={this.handleTextChange} name="content" rows="4" cols="50"></textarea> <br/>
+        <form id="usrform" className="Qform">
+          Title: <br/> <input onChange={this.handleTextChange} className="Qinput" type="text" name="title"/> <br/>
+          Question: <br/> <textarea onChange={this.handleTextChange} className="Qinput" name="content" rows="4" cols="50"></textarea> <br/>
           Subject: <br/>
           <select value={this.state.subject} name="subject" onChange={this.handleTextChange}>
             <option name="law" defaultValue value="law">law</option>

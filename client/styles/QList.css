@@ -140,13 +140,13 @@ h6 {
   text-align: center;
 }
 
-#usrform {
+.Qform {
   margin: auto;
   margin-top: 150px;
   width: 150%;
 }
 
-#usrform textarea, input[type=text]{
+.Qinput {
   width: 70%;
   padding: 12px 20px;
   margin: 8px 0;
