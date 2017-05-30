@@ -9,7 +9,7 @@ AdminUser.create!(email: 'admin@example.com', password: 'password', password_con
 # Subject seed
 Subject.create!(name: 'None')
 Subject.create!(name: 'Engineering')
-Subject.create!(name: 'Health')
+Subject.create!(name: 'Health and Fitness')
 Subject.create!(name: 'Law')
 Subject.create!(name: 'Medical')
 
