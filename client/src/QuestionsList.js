@@ -37,18 +37,13 @@ export default class QuestionsList extends Component {
     backToList.showList = true
     backToList.showOneQ = false
 
+    this.props.qlist.newMessage = 0;
+    debugger;
     this.setState({display: backToList});
     console.log("calling updateQList");
 
     this.props.updateQList()
   }
-
-  testF = () => {
-    console.log("TEST");
-    this.state.showList = true
-    this.state.showOneQ = false
-  }
-
 
   componentWillMount = () => {
     let insertQs = this.state.questions
@@ -75,7 +70,7 @@ export default class QuestionsList extends Component {
         this.updateDisplay()
       }
 
-      console.log(this.props.qlist);
+
       const questions = this.props.qlist.list
       this.state.questions = this.props.qlist.list
 

@@ -14,6 +14,7 @@ export default class Question extends Component {
 
   handleDisplay = (e) => {
     console.log("calling update display");
+    debugger;
     this.props.updateDisplay()
   }
 

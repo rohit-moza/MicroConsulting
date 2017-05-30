@@ -27,7 +27,9 @@ export default class Dashboard extends Component {
         alertData: [],
         resetDisplay: false
       },
-      userInfo: { },
+      userInfo: {
+
+      },
       poll: true
     };
   }
@@ -65,9 +67,20 @@ export default class Dashboard extends Component {
     })
     .then((response) => { return response.json()})
     .then((json) => {
+      console.log("this is json");
+      console.log(json);
      let getUser = this.state.userInfo;
+
      getUser.name = json.first_name + " " + json.last_name
      getUser.subject = json.subject
+     getUser.questionsAnswered = json.questionsAnswered
+     getUser.questionsAsked = json.questionsAsked
+     getUser.earnings_cents = json.earnings_cents
+     getUser.EngineeringQCount = json.EngineeringQCount
+     getUser.HealthAndFitnessQCount = json.HealthAndFitnessQCount
+     getUser.LawQCount = json.LawQCount
+     getUser.MedicalQCount = json.MedicalQCount
+
 
 
      if (getUser.subject === "None") {
@@ -149,6 +162,16 @@ showNewAlert = () => {
   this.setState({display: showState});
 }
 
+backToDash = () => {
+
+  let backDash = this.state.display
+  backDash.showDash = true
+  backDash.showQ = false
+
+  this.setState({display: backDash});
+  this.getAllQuestions()
+}
+
 updateQList = () => {
   console.log("calling getAllQuestions");
   let clearAlert = this.state.questions
@@ -164,16 +187,18 @@ updateQList = () => {
 
 poll = () => {
   if (this.state.poll === true) {
-    setInterval(this.getNewQuestions, 10000);
+    setInterval(this.getNewQuestions, 5000);
+    setInterval(this.getUserData, 5000);
   }
 }
 
-
-
-componentDidMount = () => {
+componentWillMount = () => {
   this.getUserData()
   this.getAllQuestions()
   this.poll()
+}
+
+componentDidMount = () => {
 
   const cookies = new Cookies();
   let token =  cookies.get('token')
@@ -216,8 +241,8 @@ componentWillUnmount = () => {
         </div>
         <div className="dashboardMain">
           { this.state.display.showAlert && <Alert alert={this.state.questions.alertData} showNewAlert={this.showNewAlert}/> }
-          { this.state.display.showDash && <DashHome/> }
-          { this.state.display.showQ && <AskQuestion/> }
+          { this.state.display.showDash && <DashHome stats={this.state.userInfo}/> }
+          { this.state.display.showQ && <AskQuestion backToDash={this.backToDash}/> }
           { this.state.display.showMyQ && <MyQuestions/> }
           {/* { this.state.display.showProfile && <Profile/> } */}
           { this.state.display.showQList && <QList qlist={this.state.questions} updateQList={this.updateQList}/> }

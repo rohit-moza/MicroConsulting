@@ -31,6 +31,13 @@ handleTextChange = (e) => {
   // this.setState({last_name: value});
 }
 
+handleDisplay = (e) => {
+  console.log("calling update display");
+
+  this.props.backToDash()
+}
+
+
  questionSubmit = (e) => {
    e.preventDefault()
    const cookies = new Cookies();
@@ -48,7 +55,7 @@ handleTextChange = (e) => {
      body: question
    })
   .then(response => response.json())
-  .then(json => console.log(json))
+  .then(json => this.handleDisplay())
  }
 
   render() {

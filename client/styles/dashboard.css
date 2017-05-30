@@ -243,3 +243,13 @@ svg line {
 .statIcon {
   padding-top: 50px;
 }
+
+
+.chartLoading {
+  padding-top: 70px;
+  height: 129px;
+}
+
+.chartLoading span {
+  font-size: 1.5em;
+}
