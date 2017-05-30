@@ -68,6 +68,7 @@ class UsersController < ApiController
       first_name: @current_user.first_name,
       last_name: @current_user.last_name,
       subject: @subject.name,
+      earnings_cents: @current_user.earnings_cents,
       questionsAsked: @questionsAsked,
       questionsAnswered: @questionsAnswered,
       EngineeringQCount: @EngineeringQCount,
