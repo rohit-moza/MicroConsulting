@@ -190,10 +190,13 @@ componentWillUnmount = () => {
     return(
       <div className="dashboardContainer">
         <div className="topSection">
+          <div className="userWelcome">
+          <img alt="login Icon" className="dashUserIcon" src="./userWelcome.svg" />
+          <p>{this.state.userInfo.name} <br/> Welcome</p> <br/>
+          </div>
           <div className="dashNav">
+            <div className="dashLogo"></div>
             <div className="userData">
-              <img alt="login Icon" className="dashUserIcon" src="./callToActionHover.svg" />
-              <p>{this.state.userInfo.name} <br/> Welcome</p> <br/>
             </div>
             <div className="dashBtns">
             <button name="showDash" onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./dash.svg" />Dashboard</button> <br/>
@@ -205,8 +208,8 @@ componentWillUnmount = () => {
           </div>
         </div>
         <div className="dashboardMain">
-          { this.state.display.showAlert && <Alert alert={this.state.questions.alertData} showNewAlert={this.showNewAlert}/> }
           { this.state.display.showDash && <DashHome/> }
+          { this.state.display.showAlert && <Alert alert={this.state.questions.alertData} showNewAlert={this.showNewAlert}/> }
           { this.state.display.showQ && <AskQuestion/> }
           { this.state.display.showMyQ && <MyQuestions/> }
           {/* { this.state.display.showProfile && <Profile/> } */}

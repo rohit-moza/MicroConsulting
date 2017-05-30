@@ -8,31 +8,22 @@
 }
 
 .dashboardMain {
-  width: 1200px;
-  top: 120px;
-  position: absolute;
-  z-index: 10;
   margin-left: 20%;
-  max-width: 70%;
   height: 100vh;
   background-color: white;
-  border-top-right-radius: 30px;
-  border-top-left-radius: 30px;
-  -webkit-box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.40);
-  -moz-box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.40);
-  box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.40);
+  float: right;
+  width: 83%;
 }
 
 
 .dashNav {
+  background-color: #364452;
   width: 17%;
-  padding: 10px;
   height: 100%; /* 100% Full-height */
   position: fixed; /* Stay in place */
   top: 0;
   left: 0;
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s;
 }
 
@@ -41,9 +32,10 @@
 }
 
 .topSection {
+  border-bottom: 2px solid #c6c6c6;
+  background-color: white;
   position: relative;
-  height: 300px;
-  background-image: url("../public/dashMain.jpg");
+  height: 70px;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -71,9 +63,25 @@
   margin-left: 50px;
 }
 
+.dashLogo {
+  height: 70px;
+  background-color: #29343e;
+}
+
+.userWelcome {
+  color: black;
+  margin: 0;
+  margin-left: 20%;
+}
+
+.userWelcome p {
+  display: inline-block;
+  margin-left: 20px;
+}
+
 .dashBtns button {
   text-align: left;
-  color: grey;
+  color: white;
   width: 200px;
   border: none;
   background: none;
@@ -82,6 +90,7 @@
 }
 
 .dashBtns button:hover {
+  border: none;
   padding-left: 10px;
   text-align: left;
   color: black;
@@ -118,20 +127,34 @@
 
 
 .dashHome {
+  height: 100%;
   font-family: 'Roboto', sans-serif;
   text-align: center;
   color: #5BC28D;
 }
 
+svg text {
+  fill: #5BC28D;
+}
+
+svg line {
+  stroke: #5BC28D;
+}
+
+.charts {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 40%;
+  padding: 20px;
+  margin-left: 15px;
+  border-radius: 10px;
+}
 
 .activity {
+  margin: auto;
   height: 180px;
-  width: 100%;
-  color: white;
-  background-image: url("../public/dash1.jpg");
-  background-size: cover;
-  border-top-left-radius: 28px;
-  border-top-right-radius: 28px;
+  width: 95%;
+  color: #5BC28D;
 }
 
 .activity h3, h2 {
@@ -149,9 +172,7 @@
   display: inline-block;
   height: 180px;
   width: 50%;
-  color: white;
-  background-image: url("../public/dash1.jpg");
-  background-size: cover;
+  color: #5BC28D;
 }
 
 
@@ -160,7 +181,5 @@
   display: inline-block;
   height: 180px;
   width: 50%;
-  color: white;
-  background-image: url("../public/dash1.jpg");
-  background-size: cover;
+  color: #5BC28D;
 }

@@ -21,13 +21,15 @@ export default class Dashboard extends Component {
         <div className="activity">
           <h2>Welcome To Your Dashboard</h2>
         </div>
+        <div className="charts">
         <h1>Questions Asked Per Subject</h1>
         <BarChart width={600} height={200} data={this.state.data}
               margin={{top: 5, right: 30, left: 20, bottom: 5}}>
          <XAxis dataKey="name"/>
          <Tooltip/>
-         <Bar dataKey="subject" fill="#347151" />
+         <Bar dataKey="subject" fill="#5BC28D" />
         </BarChart>
+        </div>
         <div className="allStats">
           <div className="statsQ">
             <h3>Total Questions Asked</h3>
