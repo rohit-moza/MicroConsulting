@@ -198,7 +198,7 @@ componentWillUnmount = () => {
             <div className="dashBtns">
             <button name="showDash" onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./dash.svg" />Dashboard</button> <br/>
             <button name="showQ" onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./askQ.svg" />Ask Question</button> <br/>
-            <button name="showQList" onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./list.svg" />Question List</button>
+            <button name="showQList" className={`${this.state.userInfo.subject ? '' : 'hideQList'}`} onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./list.svg" />Question List</button>
             <button name="showMyQ" onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./list.svg" />My Questions</button>
             {/* <button name="showProfile" onClick={this.toggleComponent}>Profile</button> */}
             </div>
