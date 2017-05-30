@@ -18,9 +18,9 @@
   background-color: white;
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
-  -webkit-box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.35);
-  -moz-box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.35);
-  box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.35);
+  -webkit-box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.40);
+  -moz-box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.40);
+  box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.40);
 }
 
 
@@ -43,7 +43,9 @@
 .topSection {
   position: relative;
   height: 300px;
-  background: #5BC28D;
+  background-image: url("../public/dashMain.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 
@@ -116,7 +118,49 @@
 
 
 .dashHome {
+  font-family: 'Roboto', sans-serif;
   text-align: center;
-  padding: 15px;
   color: #5BC28D;
+}
+
+
+.activity {
+  height: 180px;
+  width: 100%;
+  color: white;
+  background-image: url("../public/dash1.jpg");
+  background-size: cover;
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+}
+
+.activity h3, h2 {
+  margin: 0;
+}
+
+
+.allStats {
+  display: inline-block;
+  width: 100%;
+  align-content: center;
+}
+
+.stats {
+  display: inline-block;
+  height: 180px;
+  width: 50%;
+  color: white;
+  background-image: url("../public/dash1.jpg");
+  background-size: cover;
+}
+
+
+.statsQ {
+  vertical-align: bottom;
+  display: inline-block;
+  height: 180px;
+  width: 50%;
+  color: white;
+  background-image: url("../public/dash1.jpg");
+  background-size: cover;
 }

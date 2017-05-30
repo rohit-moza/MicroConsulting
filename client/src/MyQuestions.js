@@ -69,7 +69,7 @@ export default class MyQuestions extends Component {
 
       return(
         <div className="QlistScroll">
-          <h2>Unanswered Questions</h2>
+          <h2>My Questions</h2>
            {listItems}
         </div>
       )

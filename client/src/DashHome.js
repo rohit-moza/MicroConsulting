@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { LineChart, Line, PieChart, Pie } from 'recharts';
+import { LineChart, Line, PieChart, Pie, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 export default class Dashboard extends Component {
 
@@ -7,13 +7,10 @@ export default class Dashboard extends Component {
   super(props);
     this.state = {
       data: [
-      {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
-      {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
-      {name: 'Page C', uv: 2000, pv: 9800, amt: 2290},
-      {name: 'Page D', uv: 2780, pv: 3908, amt: 2000},
-      {name: 'Page E', uv: 1890, pv: 4800, amt: 2181},
-      {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
-      {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
+      {name: 'Health', subject: 130},
+      {name: 'Medical', subject: 200},
+      {name: 'Engineering', subject: 90},
+      {name: 'Law', subject: 170},
     ],
     };
   }
@@ -21,10 +18,26 @@ export default class Dashboard extends Component {
   render() {
     return(
       <div className="dashHome">
-        <h2>Welcome To Your Dashboard</h2>
-        <LineChart width={400} height={400} data={this.state.data}>
-          <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-        </LineChart>
+        <div className="activity">
+          <h2>Welcome To Your Dashboard</h2>
+        </div>
+        <h1>Questions Asked Per Subject</h1>
+        <BarChart width={600} height={200} data={this.state.data}
+              margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+         <XAxis dataKey="name"/>
+         <Tooltip/>
+         <Bar dataKey="subject" fill="#347151" />
+        </BarChart>
+        <div className="allStats">
+          <div className="statsQ">
+            <h3>Total Questions Asked</h3>
+            <h2>21</h2>
+          </div>
+          <div className="stats">
+            <h1>Total Questions Answered</h1>
+            <h1>8</h1>
+          </div>
+        </div>
       </div>
     )
   }
