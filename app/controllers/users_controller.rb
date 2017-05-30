@@ -8,7 +8,7 @@ class UsersController < ApiController
   # GET /users
   def index
     @users = User.all
-    render json: {token: token}
+    render json: @users
   end
 
   # GET /users/1
@@ -37,8 +37,8 @@ class UsersController < ApiController
       token = @user.confirmation_token
       # Define your message parameters
       message_params =  {
-                          from: 'moza.rohit@gmail.com',
-                          to:   @user.email,
+                          from: 'microConsulting.confirmation@gmail.com',
+                          to:   'moza.rohit@gmail.com',  #Hardcoded default email for dev.
                           subject: 'Micro Consult Sign up confirmation email!',
                           text:    "Thank you for signing up! Please click on this link to complete registation: http://localhost:3001/api/users/confirm?token=" + token
                         }
