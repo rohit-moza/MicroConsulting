@@ -21,7 +21,7 @@ class QuestionsController < ApiController
                   ON questionanswers.question_id = questions.id
                   LEFT OUTER JOIN answers
                   ON questionanswers.answer_id = answers.id
-                  WHERE questions.user_id=1 ORDER BY questions.id"
+                  WHERE questions.user_id=#{@current_user.id} ORDER BY questions.id"
 
     @questionsAnswers = ActiveRecord::Base.connection.execute(sql)
     render json: @questionsAnswers

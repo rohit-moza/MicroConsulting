@@ -8,7 +8,7 @@ class UsersController < ApiController
   # GET /users
   def index
     @users = User.all
-    render json: {token: token}
+    render json: @users
   end
 
   # GET /users/1
@@ -26,9 +26,9 @@ class UsersController < ApiController
     # send_file(Rails.root.join('app' , 'controllers', 'sky_wave.jpg'))
 
     if @user.save
-      # GET IMAGE URL AND SAVE WITH UNDER USER ID.jpeg
-      download = open(params[:user_image_url])
-      IO.copy_stream(download, "public/images/#{@user.id}.jpeg")
+      # # GET IMAGE URL AND SAVE WITH UNDER USER ID.jpeg
+      # download = open(params[:user_image_url])
+      # IO.copy_stream(download, "public/images/#{@user.id}.jpeg")
 
 
       #SEND EMAIL
@@ -37,8 +37,8 @@ class UsersController < ApiController
       token = @user.confirmation_token
       # Define your message parameters
       message_params =  {
-                          from: 'moza.rohit@gmail.com',
-                          to:   @user.email,
+                          from: 'microConsulting.confirmation@gmail.com',
+                          to:   'moza.rohit@gmail.com',  #Hardcoded default email for dev.
                           subject: 'Micro Consult Sign up confirmation email!',
                           text:    "Thank you for signing up! Please click on this link to complete registation: http://localhost:3001/api/users/confirm?token=" + token
                         }
@@ -56,10 +56,25 @@ class UsersController < ApiController
   def user_data
     @current_user = load_current_user!
     @subject = Subject.find(@current_user.subject_id)
+    @questionsAsked = Question.where(user_id: @current_user.id).count
+    @questionsAnswered = Answer.where(user_id: @current_user.id).count
+    # Questions asked in Subject category count
+    @EngineeringQCount = Questionanswer.where(subject_id: 2).count
+    @HealthAndFitnessQCount = Questionanswer.where(subject_id: 3).count
+    @LawQCount = Questionanswer.where(subject_id: 4).count
+    @MedicalQCount = Questionanswer.where(subject_id: 5).count
+
     render json: {
       first_name: @current_user.first_name,
       last_name: @current_user.last_name,
-      subject: @subject.name
+      subject: @subject.name,
+      earnings_cents: @current_user.earnings_cents,
+      questionsAsked: @questionsAsked,
+      questionsAnswered: @questionsAnswered,
+      EngineeringQCount: @EngineeringQCount,
+ HealthAndFitnessQCount: @HealthAndFitnessQCount,
+              LawQCount: @LawQCount,
+          MedicalQCount: @MedicalQCount
     }
   end
 
