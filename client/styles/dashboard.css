@@ -116,6 +116,14 @@
 
 /* Dash Home */
 
+svg text {
+  fill: #5BC28D;
+}
+
+svg line {
+  stroke: #5BC28D;
+}
+
 
 .dashHome {
   font-family: 'Roboto', sans-serif;
