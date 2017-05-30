@@ -16,22 +16,14 @@ class AnswersController < ApiController
   end
 
 
-  # create_table "answers", force: :cascade do |t|
-  #   t.integer "user_id"
-  #   t.string  "content"
-  #   t.index ["user_id"], name: "index_answers_on_user_id", using: :btree
-  # end
-
-# @current_user = load_current_user!
-#     @question = Question.new(user_id: @current_user.id, title: params[:title], content: params[:content])
-#     @subject = Subject.find_by(name: params[:subject])
-#     @question.save
-#     @questionsAnswers = Questionanswer.new(subject_id: @subject.id, question_id: @question.id, answer_id: nil)
   # POST /answers
   def create
     @current_user = load_current_user!
     @answer = Answer.new(user_id: @current_user.id, content: params[:answer])
     @questionsAnswers = Questionanswer.find(params[:question_id])
+    @currentBalance = @current_user.earnings_cents
+    @newBalance = @currentBalance + 100; #Add 100cents aka $1 to user account balance
+    @current_user.update_columns(earnings_cents: @newBalance) #Update expert user balance
 
     if @answer.save
       @questionsAnswers.update(answer_id: @answer.id)
