@@ -43,15 +43,21 @@ export default class QuestionsList extends Component {
     this.props.updateQList()
   }
 
+  testF = () => {
+    console.log("TEST");
+    this.state.showList = true
+    this.state.showOneQ = false
+  }
+
 
   componentWillMount = () => {
     let insertQs = this.state.questions
     insertQs = this.props.qlist.list
     this.setState({questions: insertQs})
-
   }
 
   render() {
+
     if (this.props.qlist.newMessage === true) {
       let showNewQ = this.state.display
       showNewQ.showList = false
@@ -59,11 +65,16 @@ export default class QuestionsList extends Component {
       console.log("got new message");
       return(
         <div>
-          <h2>List of questions</h2>
+          <h2>Answer this Question</h2>
              <Question QData={this.props.qlist.alertData} updateDisplay={this.updateDisplay}/>
         </div>
       )
     } else {
+
+      if (this.props.qlist.resetDisplay === true) {
+        this.updateDisplay()
+      }
+
       console.log(this.props.qlist);
       const questions = this.props.qlist.list
       this.state.questions = this.props.qlist.list

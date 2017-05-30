@@ -45,7 +45,7 @@ export default class Question extends Component {
       body: answer
     })
    .then(response => response.json())
-   .then(json => console.log(json))
+   .then(json => this.handleDisplay())
   }
 
   render() {

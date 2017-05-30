@@ -24,7 +24,8 @@ export default class Dashboard extends Component {
       questions: {
         list: [],
         newMessage: false,
-        alertData: []
+        alertData: [],
+        resetDisplay: false
       },
       userInfo: { },
       poll: true
@@ -32,13 +33,16 @@ export default class Dashboard extends Component {
   }
 
   toggleComponent = (e) => {
+    this.updateQList()
     const target = e.target;
     const name = target.name;
     let showState = this.state;
 
     showState.questions.newMessage = false
     showState.questions.alertData = []
+    showState.questions.resetDisplay = true
 
+    console.log("toggle");
     if (showState.display[name] === false) {
       for (let key in showState.display) { showState.display[key] = false; }
       showState.display[name] = true;
@@ -151,6 +155,7 @@ updateQList = () => {
   clearAlert.newMessage = false
   clearAlert.alertData = []
   clearAlert.list = []
+  clearAlert.resetDisplay = false
 
   this.setState({questions: clearAlert});
   this.getAllQuestions()
@@ -190,7 +195,12 @@ componentWillUnmount = () => {
     return(
       <div className="dashboardContainer">
         <div className="topSection">
+          <div className="logoutDash">Logout</div>
           <div className="dashNav">
+            <div className="dashLogo">
+              <img alt="login Icon" className="logoIconDash" src="./logo.svg" />
+              <span className="logoTitleDash">Consulting</span>
+            </div>
             <div className="userData">
               <img alt="login Icon" className="dashUserIcon" src="./callToActionHover.svg" />
               <p>{this.state.userInfo.name} <br/> Welcome</p> <br/>

@@ -20,7 +20,6 @@ class App extends Component {
         <div className="introContainer">
           <div className="intro">
             <img alt="login Icon" className="homeIcon" src="./homePage.svg" />
-
             <h1 className="title">Professional Consulting</h1>
             <span className="subTitle">It's the little details that are vital. Little things make big things happen.</span>
             <Link to="/register">

@@ -32,7 +32,6 @@
   top: 0;
   left: 0;
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s;
 }
 
@@ -48,6 +47,30 @@
   background-repeat: no-repeat;
 }
 
+.dashLogo {
+  margin-top: 10px;
+}
+
+.logoutDash {
+  float: right;
+  display: inline-block;
+  color: white;
+  padding: 15px;
+  padding-right: 25px;
+}
+
+.logoIconDash {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 30px;
+}
+
+.logoTitleDash {
+  color: white;
+  padding-top: 20px;
+  font-size: 1.5em;
+  padding-left: 10px;
+}
 
 .userData {
   color: white;
@@ -131,6 +154,10 @@ svg line {
   color: #5BC28D;
 }
 
+.dashHome h1 {
+  font-weight: lighter;
+}
+
 
 .activity {
   height: 180px;
@@ -146,6 +173,15 @@ svg line {
   margin: 0;
 }
 
+.welcomeMsg {
+  font-size: 2em;
+  padding-top: 70px;
+}
+
+.chart {
+  margin: auto;
+  width: 54%;
+}
 
 .allStats {
   display: inline-block;
@@ -154,21 +190,56 @@ svg line {
 }
 
 .stats {
+  margin-left: 15px;
+  border-radius: 10px;
+  font-size: 1.8em;
   display: inline-block;
-  height: 180px;
-  width: 50%;
+  height: 380px;
+  width: 45%;
+  color: white;
+  background-image: url("../public/dash1.jpg");
+  background-size: cover;
+}
+
+.stats h3, h2 {
+  margin: 0;
+  font-weight: lighter;
+}
+
+.stats h2 {
+  margin: 0;
+  padding-top: 30px;
+  font-weight: bold;
+  font-size: 3em;
+}
+
+.statsQ h3, h2 {
+  margin: 0;
+  font-weight: lighter;
+}
+
+
+.statsQ h2 {
+  margin: 0;
+  padding-top: 30px;
+  font-weight: bold;
+  font-size: 3em;
+}
+
+.statsQ {
+  margin-right: 15px;
+  border-radius: 10px;
+  font-size: 1.8em;
+  vertical-align: bottom;
+  display: inline-block;
+  height: 380px;
+  width: 45%;
   color: white;
   background-image: url("../public/dash1.jpg");
   background-size: cover;
 }
 
 
-.statsQ {
-  vertical-align: bottom;
-  display: inline-block;
-  height: 180px;
-  width: 50%;
-  color: white;
-  background-image: url("../public/dash1.jpg");
-  background-size: cover;
+.statIcon {
+  padding-top: 50px;
 }
