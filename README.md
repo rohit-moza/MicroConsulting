@@ -7,11 +7,11 @@
  * LinkedIn - https://www.linkedin.com/in/matt-socha-284969a0/ 
 
 #### Rohit Moza
-
+<img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/5/005/079/28a/23efbba.jpg" alt="RM Profile pic" style="width:40px;"/>
  *   Github - https://github.com/fozenite
  *    Email - moza.rohit@gmail.com 
  * LinkedIn - https://www.linkedin.com/in/rohit-moza/
-<img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/5/005/079/28a/23efbba.jpg" alt="RM Profile pic" style="width:80px;"/>
+
 
 ## 1.0  Introduction
 Quora/Stack Overflow meets Uber in a nutshell. A micro-consulting platform, which enables sharing of knowledge between experts and question askers. Question askers get questions answered for a fee (e.g $1, because small questions take a minute to answer - translates to consulting at $60/hr), and experts get this fee upon answering the question. A user can be an expert, a question asker or both. 
