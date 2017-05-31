@@ -1,5 +1,13 @@
 # Light Shine - a Micro Consulting Platform
 
+### Project Contributors
+#### Matt Socha                                
+
+
+#### Rohit Moza
+
+
+
 ## 1.0  Introduction
 Quora/Stack Overflow meets Uber in a nutshell. A micro-consulting platform, which enables sharing of knowledge between experts and question askers. Question askers get questions answered for a fee (e.g $1, because small questions take less roughly a minute to answer - translates to consulting at $60/hr), and experts get this fee upon answering the question. A user can be an expert, a question asker or both. 
 
@@ -14,16 +22,34 @@ Quora/Stack Overflow meets Uber in a nutshell. A micro-consulting platform, whic
   * Rails Api Server - Active Record , PostgresQL 
  
 ### 2.2  Front End
-  * React JS 
+  * React JS, CSS 
 
-
-### 2.3  APIs
-
-### 2.4  Ruby version
+### 2.3  Key APIs, Packages and Gems
+  *  JWT Tokens - Gem
+  
+  
+  *  Mail Gun - API 
+     Sending registration confirmation emails to users on registration with a confirmation token
+     Sending notification emails to users who's questions are answered to check their dashboard               
+  *  JWT Tokens - Gem
+     Manages generation of JWT tokens for every user that logs in. These tokens are sent in headers from the client, each    time access is reqiuired to Authorized sections of the Rails Api Server.
+     
+     
+  
+### 2.4  Versions
   *  2.3.3 With Rails 5  
-
+  
 ## 3.0  General Setup
+
+### 3.1 Installing Ruby gems
+
+
+### 3.2 Installing node modules
+
+
+ 
 ### 3.1  Rails API Server Setup
+
 #### 3.1.1  Database initialization
 - rake db:drop all
 - rake db:create
