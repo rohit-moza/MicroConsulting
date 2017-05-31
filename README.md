@@ -1,11 +1,17 @@
 # Light Shine - a Micro Consulting Platform
 
 ### Project Contributors
-#### Matt Socha                                
-
+#### Matt Socha   
+Contact Details:
+1) Github - https://github.com/Socha17
+2) Email
+3) Linked In
 
 #### Rohit Moza
-
+Contact Details:
+1) Github
+2) Email
+3) Linked In
 
 
 ## 1.0  Introduction
