@@ -2,16 +2,10 @@
 
 ### Project Contributors
 #### Matt Socha   
-Contact Details:
-1) Github - https://github.com/Socha17
-2) Email
-3) Linked In
+Contact Details:Github - https://github.com/Socha17; Email: mattsocha11@gmail.com ; LinkedIn
 
 #### Rohit Moza
-Contact Details:
-1) Github
-2) Email
-3) Linked In
+Contact Details:Github - https://github.com/fozenite; Email: moza.rohit@gmail.com ; LinkedIn - https://www.linkedin.com/in/rohit-moza/
 
 
 ## 1.0  Introduction
