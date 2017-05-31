@@ -228,7 +228,8 @@ componentWillUnmount = () => {
             </div>
             <div className="userData">
               <img alt="login Icon" className="dashUserIcon" src="./callToActionHover.svg" />
-              <p>{this.state.userInfo.name} <br/> Welcome</p> <br/>
+              <p>{this.state.userInfo.name} <br/>
+              Balance: ${this.state.userInfo.earnings_cents / 100}</p> <br/>
             </div>
             <div className="dashBtns">
             <button name="showDash" onClick={this.toggleComponent}><img alt="login Icon" className="dashIcon" src="./dash.svg" />Dashboard</button> <br/>

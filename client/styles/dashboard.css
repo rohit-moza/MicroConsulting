@@ -74,11 +74,12 @@
 
 .userData {
   color: white;
-  margin-top: 180px;
+  margin-top: 170px;
   margin-left: 60px;
 }
 
 .userData p {
+  vertical-align: super;
   text-align: left;
   margin: 0;
   display: inline-block;
@@ -121,7 +122,7 @@
 
 
 .dashUserIcon {
-  height: 30px;
+  height: 40px;
 }
 
 .logoutBtn {
@@ -252,4 +253,144 @@ svg line {
 
 .chartLoading span {
   font-size: 1.5em;
+}
+
+
+@media only screen and (max-width: 1400px) {
+
+  .dashboardMain {
+    max-width: 75%;
+  }
+
+}
+
+
+@media only screen and (max-width: 1250px) {
+
+  .chart {
+    width: 65%;
+  }
+
+}
+
+
+@media only screen and (max-width: 1190px) {
+
+  .dashNav {
+    width: 22%;
+    padding: 0;
+  }
+
+}
+
+@media only screen and (max-width: 900px) {
+
+  .dashboardMain {
+      width: 1200px;
+      position: inherit;
+      margin-left: 0;
+      max-width: 100%;
+      background-color: white;
+      border-top-right-radius: 0px;
+      border-top-left-radius: 0px;
+      box-shadow: 0px 0px 0px -1px rgba(0,0,0,0.0);
+  }
+
+  .activity {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #5BC28D;
+    background-image: none;
+  }
+
+  .dashNav {
+    width: 100%;
+    padding: 0;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
+
+  .userData, .dashLogo {
+    display: none;
+  }
+
+  .dashBtns {
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+
+  .dashBtns br {
+    content: ' ';
+  }
+
+  .dashBtns button {
+    color: white;
+    display: inline-block;
+  }
+
+  .dashBtns button:hover {
+    color: white;
+    display: inline-block;
+  }
+
+  .topSection {
+    background-color: #5BC28D;
+    background-image: none;
+  }
+
+  .logoutDash {
+    display: none;
+  }
+
+  .statsQ {
+    margin-right: 0;
+    border-radius: 0;
+    font-size: 1.8em;
+    vertical-align: bottom;
+    display: block;
+    height: 380px;
+    width: 100%;
+    color: white;
+    background-image: url(/static/media/dash1.7018943f.jpg);
+    background-size: cover;
+  }
+
+  .stats {
+    margin-left: 0;
+    border-radius: 0;
+    font-size: 1.8em;
+    vertical-align: bottom;
+    display: block;
+    height: 380px;
+    width: 100%;
+    color: white;
+    background-image: url(/static/media/dash1.7018943f.jpg);
+    background-size: cover;
+  }
+
+  .dashboardContainer {
+    position: absolute;
+  }
+
+  .chart {
+    width: 86%;
+  }
+
+}
+
+
+@media only screen and (max-width: 450px) {
+
+  .chart {
+    display: none;
+  }
+
+  .dashHome h1 {
+    display: none;
+  }
+
 }

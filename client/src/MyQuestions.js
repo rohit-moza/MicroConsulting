@@ -58,7 +58,7 @@ export default class MyQuestions extends Component {
           </div>
 
           <div className="questionSection">
-            <span className="titleQ">Answer:</span> <br/>
+            <span className="titleA">Answer:</span> <br/>
             <span>{questions[i].answer}</span>
           </div>
 

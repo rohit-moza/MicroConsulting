@@ -4,6 +4,7 @@
 }
 
 .QlistScroll h2 {
+  padding: 30px;
   text-align: center;
   color: #5BC28D;
 }
@@ -30,13 +31,18 @@
   color: grey;
 }
 
+.titleA {
+  font-size: 0.7em;
+  color: grey;
+}
+
 .titleSection {
   width: 40%;
   display: inline-block;
 }
 
 .questionSection {
-  width: 40%;
+  width: 30%;
   display: inline-block;
 }
 
