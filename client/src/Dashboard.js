@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import '../styles/dashboard.css';
 import AskQuestion from './AskQuestion.js';
 import DashHome from './DashHome.js';
@@ -185,6 +186,13 @@ updateQList = () => {
 }
 
 
+logOut = () => {
+  const cookies = new Cookies();
+  let token =  cookies.get('token')
+  cookies.remove('token')
+  this.props.router.push('/');
+}
+
 poll = () => {
   if (this.state.poll === true) {
     setInterval(this.getNewQuestions, 5000);
@@ -220,7 +228,7 @@ componentWillUnmount = () => {
     return(
       <div className="dashboardContainer">
         <div className="topSection">
-          <div className="logoutDash">Logout</div>
+          <div onClick={this.logOut} className="logoutDash">Logout</div>
           <div className="dashNav">
             <div className="dashLogo">
               <img alt="login Icon" className="logoIconDash" src="./logo.svg" />

@@ -30,38 +30,46 @@ Quora/Stack Overflow meets Uber in a nutshell. A micro-consulting platform, whic
   * React JS, CSS 
 
 ### 2.3  Key APIs, Packages and Gems
-  *  Recharts - Npm package
-     Used for charts in the dashboard to show user stats  
-  
-  *  Mail Gun - API 
-     Sending registration confirmation emails to users on registration with a confirmation token
-     Sending notification emails to users who's questions are answered to check their dashboard 
+
+#### 2.3.1 react-router - Npm package 
+* Handles routing for the SPA
+
+#### 2.3.2 recharts - Npm package 
+* Used for charts in the dashboard to show user stats  
+
+#### 2.3.3 'mailgun-ruby'/Mailgun - Gem/API 
+* Sending registration confirmation emails to users on registration with a confirmation token
+*  Sending notification emails to users who's questions are answered to check their dashboard 
      
-  *  JWT Tokens - Gem
-     Manages generation of JWT tokens for every user that logs in. These tokens are sent in headers from the client, each    time access is reqiuired to Authorized sections of the Rails Api Server.
+#### 2.3.4 'jwt'  - Gem 
+* Manages generation of JWT tokens for every user that logs in. These tokens are sent in headers from the client, each    time access is reqiuired to Authorized sections of the Rails Api Server.
+#### 2.3.5 'rack-cors' - Gem 
+* Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible.
+* Lets us specify origins ,which our Rails API server can take requests from.  
      
-     
-  
 ### 2.4  Versions
-  *  2.3.3 With Rails 5  
+*  Ruby 2.3.3 
+*  Rails 5.0.3
+*  Node v6.9.5
   
 ## 3.0  General Setup
 
-### 3.1 Installing Ruby gems
-
-
-### 3.2 Installing node modules
-
-
- 
-### 3.1  Rails API Server Setup
-
+### 3.1 Setting up Ruby on Rails API Server Side
 #### 3.1.1  Database initialization
 - rake db:drop all
 - rake db:create
 - rake db:migrate
 - rake db:reset db:seed
    
+### 3.2 Setting up Ruby on Rails API Server Side
+
+
+
+### 3.2 Installing node modules
+
+
 ### 3.2  React App Setup
 
+### 4.0 ERD Diagram
+![ERD Diagram](https://github.com/fozenite/MicroConsulting/blob/master/README_assets/ERD_diagram.png)
 

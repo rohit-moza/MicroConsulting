@@ -8,6 +8,7 @@
 }
 
 .dashboardMain {
+  overflow: hidden;
   width: 1200px;
   top: 120px;
   position: absolute;
