@@ -34,16 +34,19 @@ Quora/Stack Overflow meets Uber in a nutshell. A micro-consulting platform, whic
      Used for charts in the dashboard to show user stats  
   
   *  Mail Gun - API 
-     Sending registration confirmation emails to users on registration with a confirmation token
-     Sending notification emails to users who's questions are answered to check their dashboard 
+     - Sending registration confirmation emails to users on registration with a confirmation token
+     - Sending notification emails to users who's questions are answered to check their dashboard 
      
   *  JWT Tokens - Gem
-     Manages generation of JWT tokens for every user that logs in. These tokens are sent in headers from the client, each    time access is reqiuired to Authorized sections of the Rails Api Server.
+     - Manages generation of JWT tokens for every user that logs in. These tokens are sent in headers from the client, each    time access is reqiuired to Authorized sections of the Rails Api Server.
+  *  CORS - Gem 
+     - Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible.
+     - Lets us specify origins ,which our Rails API server can take requests from.  
      
-     
-  
 ### 2.4  Versions
-  *  2.3.3 With Rails 5  
+  *  Ruby 2.3.3 
+  *  Rails 5.0.3
+  *  Node v6.9.5
   
 ## 3.0  General Setup
 
