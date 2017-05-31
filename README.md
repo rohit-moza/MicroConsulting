@@ -31,7 +31,7 @@ Quora/Stack Overflow meets Uber in a nutshell. A micro-consulting platform, whic
 
 ### 2.3  Key APIs, Packages and Gems
   *  Recharts - Npm package
-     Used for charts in the dashboard to show user stats  
+     - Used for charts in the dashboard to show user stats  
   
   *  Mail Gun - API 
      - Sending registration confirmation emails to users on registration with a confirmation token
@@ -50,21 +50,20 @@ Quora/Stack Overflow meets Uber in a nutshell. A micro-consulting platform, whic
   
 ## 3.0  General Setup
 
-### 3.1 Installing Ruby gems
-
-
-### 3.2 Installing node modules
-
-
- 
-### 3.1  Rails API Server Setup
-
+### 3.1 Setting up Ruby on Rails API Server Side
 #### 3.1.1  Database initialization
 - rake db:drop all
 - rake db:create
 - rake db:migrate
 - rake db:reset db:seed
    
+### 3.2 Setting up Ruby on Rails API Server Side
+
+
+
+### 3.2 Installing node modules
+
+
 ### 3.2  React App Setup
 
 ### 4.0 ERD Diagram
