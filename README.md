@@ -64,4 +64,6 @@ Quora/Stack Overflow meets Uber in a nutshell. A micro-consulting platform, whic
    
 ### 3.2  React App Setup
 
+### 4.0 ERD Diagram
+![ERD Diagram](https://github.com/fozenite/MicroConsulting/blob/master/README_assets/ERD_diagram.png)
 
