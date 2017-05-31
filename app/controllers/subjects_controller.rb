@@ -15,13 +15,14 @@ class SubjectsController < ApiController
 
   # POST /subjects
   def create
-    @subject = Subject.new(subject_params)
+    render json: {success: params}
+    # @subject = Subject.new(subject_params)
 
-    if @subject.save
-      render json: @subject, status: :created, location: @subject
-    else
-      render json: @subject.errors, status: :unprocessable_entity
-    end
+    # if @subject.save
+    #   render json: @subject, status: :created, location: @subject
+    # else
+    #   render json: @subject.errors, status: :unprocessable_entity
+    # end
   end
 
   # PATCH/PUT /subjects/1
