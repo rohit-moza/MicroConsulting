@@ -87,11 +87,8 @@ export default class MyQuestions extends Component {
         <div className="QlistScroll">
           <h2>My Questions</h2>
           <form>
-            <input type="text"
-                   onChange={this.searchHandler}
-                   value ={this.state.term}
-
-            />
+            <img alt="login Icon" className="searchIcon" src="./searchIcon.svg" />
+            <input className="searchBar" placeholder="Search" type="text" onChange={this.searchHandler} value ={this.state.term}/>
           </form>
            {listItems}
         </div>

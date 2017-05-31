@@ -1,5 +1,5 @@
 .QlistScroll {
-  /*overflow-y: scroll;*/
+  overflow-y: scroll;
   height: 100%;
 }
 
@@ -170,4 +170,24 @@ h6 {
   border-radius: 30px;
   color: white;
   margin-top: 25px;
+}
+
+
+
+/* MyQuestions */
+
+.searchBar {
+  vertical-align: super;
+  width: 150px;
+  margin-left: 10px;
+  margin-bottom: 30px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #5BC28D;
+}
+
+
+.searchIcon {
+  margin-left: 110px;
+  height: 25px;
 }
