@@ -58,6 +58,15 @@ Question.create(user_id: 1, title: 'Increase Bench lift weight' ,content: 'How d
 Questionanswer.create(subject_id: 3, question_id: 6, answer_id: nil)
 # Start doing complexes and mix in pushup days + flat dumbell bench presses into your routine
 
+Question.create(user_id: 1, title: "Venezuela Boy Band " ,content: "What's Venezuela's favorite boy band?")
+Questionanswer.create(subject_id: 3, question_id: 7, answer_id: nil)
+# Juan Direction
+
+Question.create(user_id: 1, title: "Katy Perry " ,content: "What is Katy Perry's best song?")
+Questionanswer.create(subject_id: 3, question_id: 8, answer_id: nil)
+# the Juan that got away
+
+
 
 
 
