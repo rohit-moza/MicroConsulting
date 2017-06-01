@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/register.css';
 import { Link } from 'react-router';
+import Cookies from 'universal-cookie';
 
 class Register extends Component {
 
@@ -154,9 +155,12 @@ registerSubmit = (e) => {
     body: toSend
   })
  .then(response => response.json())
- .then(json => console.log(json))
+ .then(json => this.showDash(json))
 }
 
+showDash = () => {
+  this.props.router.push('/');
+}
 
 
   render() {
