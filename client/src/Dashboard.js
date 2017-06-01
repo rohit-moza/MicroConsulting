@@ -232,7 +232,7 @@ componentWillUnmount = () => {
           <div className="dashNav">
             <div className="dashLogo">
               <img alt="login Icon" className="logoIconDash" src="./logo.svg" />
-              <span className="logoTitleDash">Consulting</span>
+              <span className="logoTitleDash">Light Shine</span>
             </div>
             <div className="userData">
               <img alt="login Icon" className="dashUserIcon" src="./callToActionHover.svg" />

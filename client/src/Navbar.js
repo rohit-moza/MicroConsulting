@@ -16,7 +16,7 @@ export default class Navbar extends Component {
     return(
       <div className="navBar">
         <img alt="login Icon" className="logoIcon" src="./logo.svg" />
-        <span className="logoTitle">Consulting</span>
+        <span className="logoTitle">Light Shine</span>
         <div className="navBtns">
           <Link to="/login">
             <button className="login">
