@@ -32,8 +32,6 @@ handleTextChange = (e) => {
 }
 
 handleDisplay = (e) => {
-  console.log("calling update display");
-
   this.props.backToDash()
 }
 
@@ -45,7 +43,6 @@ handleDisplay = (e) => {
 
    let question = JSON.stringify(this.state)
 
-   console.log(question);
    fetch("./api/questions", {
      method: 'POST',
      headers: {

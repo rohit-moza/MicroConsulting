@@ -45,7 +45,7 @@ export default class Dashboard extends Component {
     showState.questions.alertData = []
     showState.questions.resetDisplay = true
 
-    console.log("toggle");
+
     if (showState.display[name] === false) {
       for (let key in showState.display) { showState.display[key] = false; }
       showState.display[name] = true;
@@ -56,7 +56,7 @@ export default class Dashboard extends Component {
 
 
   getUserData = () => {
-      console.log("got user Data");
+
       const cookies = new Cookies();
       let token =  cookies.get('token')
     fetch("./api/users/user_data", {
@@ -68,8 +68,7 @@ export default class Dashboard extends Component {
     })
     .then((response) => { return response.json()})
     .then((json) => {
-      console.log("this is json");
-      console.log(json);
+
      let getUser = this.state.userInfo;
 
      getUser.name = json.first_name + " " + json.last_name
@@ -89,13 +88,12 @@ export default class Dashboard extends Component {
      }
 
      this.setState({userInfo: getUser})
-     console.log(this.state);
+
 
     })
   }
 
 getAllQuestions = () => {
-    console.log("got invoked");
     const cookies = new Cookies();
     let token =  cookies.get('token')
   fetch("./api/questions", {
@@ -111,17 +109,17 @@ getAllQuestions = () => {
    getQs.list = json
    getQs.newMessage = false
    this.setState({questions: getQs})
-   console.log(this.state);
+
   })
 }
 
 getNewQuestions = () => {
-  // console.log(this.state.questions);
+
   if (this.state.poll === false) {
     return false
   }
   if (this.state.display.showDash === true) {
-    console.log("got new invoked");
+
     const cookies = new Cookies();
     let token =  cookies.get('token')
     fetch("./api/questions", {
@@ -139,9 +137,7 @@ getNewQuestions = () => {
 
 handleNewQuestion = (data) => {
   if (data.length > this.state.questions.list.length) {
-    console.log("new message received");
 
-    console.log(data);
     let newQ = data[data.length-1]
 
     let showAlert = this.state;
@@ -174,7 +170,7 @@ backToDash = () => {
 }
 
 updateQList = () => {
-  console.log("calling getAllQuestions");
+
   let clearAlert = this.state.questions
   clearAlert.newMessage = false
   clearAlert.alertData = []
@@ -211,7 +207,7 @@ componentDidMount = () => {
   const cookies = new Cookies();
   let token =  cookies.get('token')
   if (!token) {
-    console.log("no token");
+
     this.props.router.push('/login');
   }
 
@@ -221,7 +217,6 @@ componentWillUnmount = () => {
   if (this.state.poll.show && this.state.showDash) {
     this.state.poll.show = false
   }
-  console.log("unmounting");
 }
 
   render() {

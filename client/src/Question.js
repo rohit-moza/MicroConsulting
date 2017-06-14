@@ -13,7 +13,6 @@ export default class Question extends Component {
   }
 
   handleDisplay = (e) => {
-    console.log("calling update display");
     debugger;
     this.props.updateDisplay()
   }
@@ -35,8 +34,7 @@ export default class Question extends Component {
     let token =  cookies.get('token')
 
     let answer = JSON.stringify(this.state)
-    console.log(this.props.QData.id);
-    console.log(answer);
+
     fetch("./api/answers", {
       method: 'POST',
       headers: {

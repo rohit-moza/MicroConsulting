@@ -20,10 +20,6 @@ export default class DashHome extends Component {
 
 
   fillData = () => {
-    console.log("dash home");
-
-    console.log('stats', this.props.stats);
-    console.log('stats.questionsAnswered', this.props.stats.questionsAnswered);
 
     let number = this.props.stats
 
@@ -31,7 +27,7 @@ export default class DashHome extends Component {
     this.state.data[1].subject = this.props.stats.MedicalQCount
     this.state.data[2].subject = this.props.stats.EngineeringQCount
     this.state.data[3].subject = this.props.stats.LawQCount
-    // this.setState({data: newData});
+
   }
 
   componentWillMount = () => {
@@ -54,7 +50,7 @@ export default class DashHome extends Component {
 
   render() {
     this.fillData()
-    console.log(this.state);
+
 
     if (this.state.loading === true) {
       return (

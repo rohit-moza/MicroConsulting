@@ -10,7 +10,6 @@ import Cookies from 'universal-cookie';
 let searchingFor = (term) => {
 
   return (x) => {
-     console.log("What is x:  ", x);
     return x.title.toLowerCase().includes(term.toLowerCase()) || !term;
   }
 }
@@ -34,7 +33,6 @@ export default class MyQuestions extends Component {
   // getAllQuestions
   getAllQuestions = () => {
 
-    console.log("got invoked");
     const cookies = new Cookies();
     let token =  cookies.get('token')
     fetch("./api/questions/my_questions", {
@@ -48,12 +46,9 @@ export default class MyQuestions extends Component {
    .then((json) => {
      let getQs = this.state.questions;
      getQs = json
-     console.log(json);
-
 
      this.setState({questions: getQs})
-     console.log(this.state);
-   })
+    })
   }
 
   componentWillMount = () => {
@@ -61,7 +56,7 @@ export default class MyQuestions extends Component {
   }
 
   render() {
-    console.log(this.props.qlist);
+
       const questions = this.state.questions
 
 

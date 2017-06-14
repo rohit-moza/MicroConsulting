@@ -39,8 +39,6 @@ export default class QuestionsList extends Component {
 
     this.props.qlist.newMessage = 0;
     this.setState({display: backToList});
-    console.log("calling updateQList");
-
     this.props.updateQList()
   }
 
@@ -56,7 +54,7 @@ export default class QuestionsList extends Component {
       let showNewQ = this.state.display
       showNewQ.showList = false
       showNewQ.showOneQ = true
-      console.log("got new message");
+
       return(
         <div className="QlistScroll">
           <h2>Unanswered Questions</h2>

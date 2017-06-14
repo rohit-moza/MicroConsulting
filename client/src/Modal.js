@@ -146,7 +146,7 @@ handleLogin = (login) => {
     this.onClose();
     this.props.router.push('/dashboard');
   } else {
-    console.log("ERROR");
+    console.log("ERROR");   // NEEDS FIXING
   }
 }
 
