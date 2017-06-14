@@ -39,8 +39,7 @@ export default class DashHome extends Component {
   }
 
   componentDidMount = () => {
-    console.log("why is this happening");
-    console.log(this.state);
+
     if (this.state.loading === true) {
       setTimeout(() => {
         this.setState({loading: false});

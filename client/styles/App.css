@@ -30,11 +30,11 @@ body {
 .title {
   font-weight: 400;
   font-size: 2.5em;
-  margin-bottom: 10px;
+  margin-bottom: 3%;
 }
 
 .subTitle {
-margin-top: -5px;
+display:flex;
 }
 
 
@@ -43,7 +43,7 @@ margin-top: -5px;
   padding-bottom: 10px;
   height: 40px;
   font-size: 0.8em;
-  margin: 30px 20px 10px 20px;
+  margin: 5% 5% 5% 5%;
   background: #5BC28D;
   border: none;
   color: white;
@@ -57,19 +57,6 @@ margin-top: -5px;
 
 .callAction:hover {
   padding-right: 0;
-  padding-bottom: 10px;
-  height: 40px;
-  font-size: 0.8em;
-  margin: 30px 20px 10px 20px;
-  background: #5BC28D;
-  border: none;
-  color: white;
-  border-radius: 30px;
-  width: 200px;
-  transition: all 0.5s;
-  -webkit-box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.35);
-  -moz-box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.35);
-  box-shadow: 0px 0px 37px -1px rgba(0,0,0,0.35);
 }
 
 .actionIcon {
