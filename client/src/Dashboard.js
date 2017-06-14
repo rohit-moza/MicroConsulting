@@ -59,7 +59,7 @@ export default class Dashboard extends Component {
       console.log("got user Data");
       const cookies = new Cookies();
       let token =  cookies.get('token')
-    fetch("http://localhost:3001/api/users/user_data", {
+    fetch("./api/users/user_data", {
       method: 'GET',
       headers: {
       'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ getAllQuestions = () => {
     console.log("got invoked");
     const cookies = new Cookies();
     let token =  cookies.get('token')
-  fetch("http://localhost:3001/api/questions", {
+  fetch("./api/questions", {
     method: 'GET',
     headers: {
     'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ getNewQuestions = () => {
     console.log("got new invoked");
     const cookies = new Cookies();
     let token =  cookies.get('token')
-    fetch("http://localhost:3001/api/questions", {
+    fetch("./api/questions", {
     method: 'GET',
     headers: {
     'Content-Type': 'application/json',

@@ -147,7 +147,7 @@ registerSubmit = (e) => {
   e.preventDefault()
   let toSend = JSON.stringify(this.state)
 
-  fetch("http://localhost:3001/api/users", {
+  fetch("./api/users", {
     method: 'POST',
     headers: {
     'Content-Type': 'application/json'

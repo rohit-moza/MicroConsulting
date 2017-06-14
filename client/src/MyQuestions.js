@@ -37,7 +37,7 @@ export default class MyQuestions extends Component {
     console.log("got invoked");
     const cookies = new Cookies();
     let token =  cookies.get('token')
-    fetch("http://localhost:3001/api/questions/my_questions", {
+    fetch("./api/questions/my_questions", {
       method: 'GET',
       headers: {
       'Content-Type': 'application/json',

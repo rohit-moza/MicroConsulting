@@ -37,7 +37,7 @@ export default class Question extends Component {
     let answer = JSON.stringify(this.state)
     console.log(this.props.QData.id);
     console.log(answer);
-    fetch("http://localhost:3001/api/answers", {
+    fetch("./api/answers", {
       method: 'POST',
       headers: {
       'Content-Type': 'application/json',
