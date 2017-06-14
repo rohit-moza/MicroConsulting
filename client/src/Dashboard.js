@@ -223,7 +223,15 @@ componentWillUnmount = () => {
     return(
       <div className="dashboardContainer">
         <div className="topSection">
-          <div onClick={this.logOut} className="logoutDash"><a href="#" className="deadLink"><span>Logout</span></a></div>
+          <div onClick={this.logOut} className="logoutDash">
+           <div className="navBar">
+              <div className="navBtns">
+                <button className="login">
+                  Logout
+                </button>
+              </div>
+            </div>
+          </div>
           <div className="dashNav">
             <div className="dashLogo">
               <img alt="login Icon" className="logoIconDash" src="./logo.svg" />
