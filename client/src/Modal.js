@@ -165,7 +165,8 @@ handleLogin = (login) => {
       left: 0,
       right: 0,
       backgroundColor: 'rgba(0,0,0,0.8)',
-      padding: 50
+      padding: 50,
+      overflow: 'auto'
     };
 
     // The modal "window"
@@ -183,7 +184,7 @@ handleLogin = (login) => {
       <div className="backdrop fade" style={backdropStyle}>
         <div className="modal slide" style={modalStyle}>
 
-          <section>
+          <section className="overallSection">
             <div className="loginSection">
               <Link to="/">
               <span className="closeBtn" onClick={this.props.onClose}>x</span>
